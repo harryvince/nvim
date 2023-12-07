@@ -13,6 +13,11 @@ return {
 		local on_attach = function(client, bufnr)
 			opts.buffer = bufnr
 
+			if client.name == "tsserver" or client.name == "jsonls" then
+				client.server_capabilities.documentFormattingProvider = false
+				client.server_capabilities.documentFormattingRangeProvider = false
+			end
+
 			-- set keybinds
 			vim.keymap.set("n", "gd", function()
 				vim.lsp.buf.definition()
@@ -43,9 +48,6 @@ return {
 			end, opts)
 			vim.keymap.set("i", "<C-h>", function()
 				vim.lsp.buf.signature_help()
-			end, opts)
-			vim.keymap.set("n", "<leader>ff", function()
-				vim.lsp.buf.format({ async = true })
 			end, opts)
 		end
 
@@ -90,11 +92,11 @@ return {
 					end,
 				})
 
-                vim.api.nvim_create_autocmd({ "BufWrite" }, {
-                    group = vim.api.nvim_create_augroup("svelte_ondidchangetsorjsfile", { clear = true }),
-                    pattern = { "+page.server.ts", "+page.ts", "+layout.server.ts", "+layout.ts" },
-                    command = 'lua require("config.utils").svelteFix()'
-                })
+				vim.api.nvim_create_autocmd({ "BufWrite" }, {
+					group = vim.api.nvim_create_augroup("svelte_ondidchangetsorjsfile", { clear = true }),
+					pattern = { "+page.server.ts", "+page.ts", "+layout.server.ts", "+layout.ts" },
+					command = 'lua require("config.utils").svelteFix()',
+				})
 			end,
 		})
 
