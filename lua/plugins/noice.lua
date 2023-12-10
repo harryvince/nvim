@@ -7,14 +7,21 @@ return {
 	config = function()
 		require("noice").setup({
 			lsp = {
-				-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
 				override = {
 					["vim.lsp.util.convert_input_to_markdown_lines"] = true,
 					["vim.lsp.util.stylize_markdown"] = true,
 					["cmp.entry.get_documentation"] = true,
 				},
+				signature = {
+					enabled = true,
+					auto_open = {
+						enabled = false,
+						trigger = true, -- Automatically show signature help when typing a trigger character from the LSP
+						luasnip = true, -- Will open signature help when jumping to Luasnip insert nodes
+						throttle = 50, -- Debounce lsp signature help request by 50ms
+					},
+				},
 			},
-			-- you can enable a preset for easier configuration
 			presets = {
 				bottom_search = true, -- use a classic bottom cmdline for search
 				command_palette = true, -- position the cmdline and popupmenu together
@@ -29,6 +36,13 @@ return {
 				{
 					view = "cmdline",
 					filter = { event = "msg_showmode" },
+				},
+			},
+			views = {
+				mini = {
+					win_options = {
+						winblend = 0,
+					},
 				},
 			},
 		})
