@@ -30,4 +30,4 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
 -- Formatting
-vim.keymap.set("n", "<leader>ff", vim.lsp.buf.format())
+vim.keymap.set("n", "<leader>ff", vim.lsp.buf.format)

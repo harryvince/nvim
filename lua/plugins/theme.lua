@@ -5,7 +5,7 @@ return {
     config = function()
         require("catppuccin").setup({
             flavour = "macchiato",     -- latte, frappe, macchiato, mocha
-            transparent_background = false,
+            transparent_background = true,
             show_end_of_buffer = false,
             term_colors = true,
             dim_inactive = {
@@ -13,7 +13,6 @@ return {
             },
             integrations = {
                 gitsigns = true,
-                nvimtree = true,
                 telescope = {
                     enabled = true,
                 },
@@ -21,7 +20,6 @@ return {
                 mason = true,
                 treesitter_context = true,
                 treesitter = true,
-                fidget = true,
                 dap = {
                     enabled = true,
                     enable_ui = true,
