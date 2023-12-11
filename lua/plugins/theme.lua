@@ -4,8 +4,8 @@ return {
 	priority = 1000,
 	config = function()
 		require("catppuccin").setup({
-			flavour = "macchiato", -- latte, frappe, macchiato, mocha
-			transparent_background = true,
+			flavour = "mocha", -- latte, frappe, macchiato, mocha
+			transparent_background = false,
 			show_end_of_buffer = false,
 			term_colors = true,
 			dim_inactive = {
@@ -15,6 +15,7 @@ return {
 				gitsigns = true,
                 telescope = {
                     enabled = true,
+                    style = "nvchad"
                 },
 				noice = true,
 				cmp = true,
