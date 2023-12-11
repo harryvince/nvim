@@ -5,6 +5,7 @@ return {
 			options = {
 				section_separators = "",
 				component_separators = "|",
+                theme = "catppuccin"
 			},
 			sections = {
 				-- left
@@ -17,7 +18,7 @@ return {
 				lualine_y = { "progress" },
 				lualine_z = { "location" },
 			},
-			extensions = { "quickfix", "fugitive", "fzf" },
+			extensions = { "mason", "fzf", "nvim-dap-ui" },
 		})
 	end,
 }
