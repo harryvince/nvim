@@ -4,13 +4,25 @@ return {
 	event = { "BufReadPre", "BufNewFile" }, -- to enable uncomment this
 	dependencies = {
 		"jay-babu/mason-null-ls.nvim",
+        "WhoIsSethDaniel/mason-tool-installer.nvim",
 	},
 	config = function()
 		local mason_null_ls = require("mason-null-ls")
+		local mason_tool_installer = require("mason-tool-installer")
 
 		local null_ls = require("null-ls")
-
 		local null_ls_utils = require("null-ls.utils")
+
+		mason_tool_installer.setup({
+			ensure_installed = {
+				"prettierd",
+				"shfmt",
+				"stylua", -- lua formatter
+				"black", -- python formatter
+				"pylint", -- python linter
+				"eslint_d", -- js linter
+			},
+		})
 
 		mason_null_ls.setup({
 			ensure_installed = {
