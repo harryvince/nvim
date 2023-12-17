@@ -86,7 +86,7 @@ return {
                         return cwd .. '/.venv/bin/python'
                     else
                         return os.getenv('HOME') ..
-                        '/.local/share/nvim/mason/packages/jedi-language-server/venv/bin/python'
+                        '/.local/share/nvim/mason/packages/debugpy/venv/bin/python'
                     end
                 end,
             },
