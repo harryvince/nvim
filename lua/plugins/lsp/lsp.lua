@@ -103,6 +103,8 @@ return {
 				"svelte",
 				"lua_ls",
 				"pyright",
+                "bashls",
+                "jsonls",
 			},
 			automatic_installation = true,
 			handlers = {

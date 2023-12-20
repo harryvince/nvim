@@ -4,7 +4,7 @@ return {
 	event = { "BufReadPre", "BufNewFile" }, -- to enable uncomment this
 	dependencies = {
 		"jay-babu/mason-null-ls.nvim",
-        "WhoIsSethDaniel/mason-tool-installer.nvim",
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
 	},
 	config = function()
 		local mason_null_ls = require("mason-null-ls")
@@ -17,27 +17,27 @@ return {
 			ensure_installed = {
 				"prettierd",
 				"shfmt",
-				"stylua", -- lua formatter
-				"black", -- python formatter
-				"pylint", -- python linter
-				"eslint_d", -- js linter
+				"stylua",
+				"black",
+				"pylint",
+				"eslint_d",
 			},
 		})
 
 		mason_null_ls.setup({
 			ensure_installed = {
-				"prettier", -- prettier formatter
-				"stylua", -- lua formatter
-				"black", -- python formatter
-				"pylint", -- python linter
-				"eslint_d", -- js linter
+				"prettier",
+				"shfmt",
+				"stylua",
+				"black",
+				"pylint",
+				"eslint_d",
 			},
 		})
 
 		-- for conciseness
-		local formatting = null_ls.builtins.formatting -- to setup formatters
+		local formatting = null_ls.builtins.formatting
 
-		-- configure null_ls
 		null_ls.setup({
 			-- add package.json as identifier for root (for typescript monorepos)
 			root_dir = null_ls_utils.root_pattern(".null-ls-root", "Makefile", ".git", "package.json"),
@@ -47,10 +47,11 @@ return {
 				--  "formatting.prettier.with({disabled_filetypes: {}})" (see null-ls docs)
 				formatting.prettier.with({
 					extra_filetypes = { "svelte" },
-				}), -- js/ts formatter
-				formatting.stylua, -- lua formatter
+				}),
+				formatting.stylua,
 				formatting.isort,
 				formatting.black,
+                formatting.shfmt
 			},
 		})
 	end,
