@@ -14,7 +14,7 @@ return {
 		lsp.on_attach(function(client, bufnr)
 			local opts = { buffer = bufnr, remap = false }
 
-			if client.name == "tsserver" or client.name == "jsonls" then
+			if client.name ~= "null-ls" then
 				client.server_capabilities.documentFormattingProvider = false
 				client.server_capabilities.documentFormattingRangeProvider = false
 			end
