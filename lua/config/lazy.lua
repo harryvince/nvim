@@ -8,7 +8,6 @@ require("lazy").setup({
     { import = "plugins" },
     { import = "plugins.lsp" }
 },{
-    dev = {
-        path = "~/dev/nvim-plugins/",
-    }
+    dev = { path = "~/dev/nvim-plugins/" },
+    change_detection = { notify = false },
 })

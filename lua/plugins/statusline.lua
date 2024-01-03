@@ -8,10 +8,9 @@ return {
 				component_separators = "|",
 			},
 			sections = {
-				--
 				-- left
 				lualine_a = { "mode" },
-				lualine_b = { "branch", "diff", "diagnostics" },
+				lualine_b = { "diagnostics" },
 				lualine_c = { "filename" },
 
 				-- right
