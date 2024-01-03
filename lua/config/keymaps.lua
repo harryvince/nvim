@@ -31,3 +31,6 @@ vim.keymap.set("i", "<C-c>", "<Esc>")
 
 -- Formatting
 vim.keymap.set("n", "<leader>ff", vim.lsp.buf.format)
+
+-- Focus window
+vim.keymap.set("n", "<leader>oo", "<cmd>only<CR>")
