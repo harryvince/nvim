@@ -94,6 +94,12 @@ return {
 			},
 		})
 
+		lsp.configure("ansiblels", {
+            filetypes = {
+                "yaml.ansible"
+            }
+		})
+
 		require("mason").setup()
 		require("mason-lspconfig").setup({
 			ensure_installed = {
