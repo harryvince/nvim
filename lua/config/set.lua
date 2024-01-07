@@ -1,3 +1,5 @@
+local utils = require("config.utils")
+
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
@@ -36,3 +38,5 @@ vim.g.netrw_banner = 0
 
 vim.cmd "set noshowmode"
 vim.cmd "set nrformats+=alpha"
+
+utils.SetupClipboard()
