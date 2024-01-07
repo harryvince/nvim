@@ -1,6 +1,6 @@
 return {
 	"neovim/nvim-lspconfig",
-	event = 'VeryLazy',
+	event = "VeryLazy",
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
@@ -11,9 +11,7 @@ return {
 	config = function()
 		local lsp = require("lsp-zero")
 
-		lsp.on_attach(function(client, bufnr)
-			local opts = { buffer = bufnr, remap = false }
-
+		lsp.on_attach(function(client, _)
 			if client.name ~= "null-ls" then
 				client.server_capabilities.documentFormattingProvider = false
 				client.server_capabilities.documentFormattingRangeProvider = false
@@ -35,38 +33,6 @@ return {
 					command = 'lua require("config.utils").svelteFix()',
 				})
 			end
-
-			-- set keybinds
-			vim.keymap.set("n", "gd", function()
-				vim.lsp.buf.definition()
-			end, opts)
-			vim.keymap.set("n", "K", function()
-				vim.lsp.buf.hover()
-			end, opts)
-			vim.keymap.set("n", "<leader>vws", function()
-				vim.lsp.buf.workspace_symbol()
-			end, opts)
-			vim.keymap.set("n", "<leader>vd", function()
-				vim.diagnostic.open_float()
-			end, opts)
-			vim.keymap.set("n", "]d", function()
-				vim.diagnostic.goto_next()
-			end, opts)
-			vim.keymap.set("n", "[d", function()
-				vim.diagnostic.goto_prev()
-			end, opts)
-			vim.keymap.set("n", "<leader>ca", function()
-				vim.lsp.buf.code_action()
-			end, opts)
-			vim.keymap.set("n", "<leader>rr", function()
-				vim.lsp.buf.references()
-			end, opts)
-			vim.keymap.set("n", "<leader>rn", function()
-				vim.lsp.buf.rename()
-			end, opts)
-			vim.keymap.set("i", "<C-h>", function()
-				vim.lsp.buf.signature_help()
-			end, opts)
 		end)
 
 		lsp.set_preferences({
@@ -74,7 +40,7 @@ return {
 		})
 
 		lsp.configure("lua_ls", {
-			settings = { -- custom settings for lua
+			settings = {
 				Lua = {
 					-- make the language server recognize "vim" global
 					diagnostics = {
@@ -95,9 +61,9 @@ return {
 		})
 
 		lsp.configure("ansiblels", {
-            filetypes = {
-                "yaml.ansible"
-            }
+			filetypes = {
+				"yaml.ansible",
+			},
 		})
 
 		require("mason").setup()
@@ -109,8 +75,8 @@ return {
 				"svelte",
 				"lua_ls",
 				"pyright",
-                "bashls",
-                "jsonls",
+				"bashls",
+				"jsonls",
 			},
 			automatic_installation = true,
 			handlers = {

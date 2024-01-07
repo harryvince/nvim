@@ -6,7 +6,6 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 require("lazy").setup({
     { import = "plugins" },
-    { import = "plugins.lsp" }
 },{
     dev = { path = "~/dev/nvim-plugins/" },
     change_detection = { notify = false },

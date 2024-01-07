@@ -1,7 +1,7 @@
 return {
 	"nvimtools/none-ls.nvim",
 	lazy = true,
-	event = 'VeryLazy',
+	event = "VeryLazy",
 	dependencies = {
 		"jay-babu/mason-null-ls.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
@@ -13,38 +13,22 @@ return {
 		local null_ls = require("null-ls")
 		local null_ls_utils = require("null-ls.utils")
 
+		local tools = { "prettierd", "shfmt", "stylua", "black", "pylint", "eslint_d" }
+
 		mason_tool_installer.setup({
-			ensure_installed = {
-				"prettierd",
-				"shfmt",
-				"stylua",
-				"black",
-				"pylint",
-				"eslint_d",
-			},
+			ensure_installed = tools,
 		})
 
 		mason_null_ls.setup({
-			ensure_installed = {
-				"prettier",
-				"shfmt",
-				"stylua",
-				"black",
-				"pylint",
-				"eslint_d",
-			},
+			ensure_installed = tools,
 		})
 
 		-- for conciseness
 		local formatting = null_ls.builtins.formatting
 
 		null_ls.setup({
-			-- add package.json as identifier for root (for typescript monorepos)
 			root_dir = null_ls_utils.root_pattern(".null-ls-root", "Makefile", ".git", "package.json"),
-			-- setup formatters & linters
 			sources = {
-				--  to disable file types use
-				--  "formatting.prettier.with({disabled_filetypes: {}})" (see null-ls docs)
 				formatting.prettier.with({
 					extra_filetypes = { "svelte" },
 				}),

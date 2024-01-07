@@ -1,1 +1,4 @@
-vim.cmd("autocmd BufNewFile,BufRead *.yaml.ansible set filetype=yaml.ansible")
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+    pattern = {"*.yaml.ansible"},
+    command = "set filetype=yaml.ansible"
+})

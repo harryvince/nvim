@@ -1,6 +1,5 @@
 require("config.keymaps")
 require("config.set")
-require("config.clipboard")
 require("config.utils")
 require("config.lazy")
 require("config.autocmds")
