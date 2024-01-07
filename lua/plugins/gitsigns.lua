@@ -1,5 +1,6 @@
 return {
     'lewis6991/gitsigns.nvim',
+    event = 'VeryLazy',
     config = function()
         require('gitsigns').setup({
             on_attach = function(bufnr)
@@ -26,7 +27,6 @@ return {
 
                 -- Actions
                 map('n', '<leader>tb', gs.toggle_current_line_blame)
-                map('n', '<leader>hd', gs.diffthis)
                 map('n', '<leader>td', gs.toggle_deleted)
             end
         })

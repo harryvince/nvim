@@ -7,21 +7,21 @@ return {
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 	},
 	config = function()
-		local mason_null_ls = require("mason-null-ls")
-		local mason_tool_installer = require("mason-tool-installer")
-
 		local null_ls = require("null-ls")
 		local null_ls_utils = require("null-ls.utils")
 
-		local tools = { "prettierd", "shfmt", "stylua", "black", "pylint", "eslint_d" }
+		local tools = {
+			"prettierd",
+			"shfmt",
+			"stylua",
+			"black",
+			"pylint",
+			"eslint_d",
+			"ansible-lint",
+		}
 
-		mason_tool_installer.setup({
-			ensure_installed = tools,
-		})
-
-		mason_null_ls.setup({
-			ensure_installed = tools,
-		})
+		require("mason-tool-installer").setup({ ensure_installed = tools })
+		require("mason-null-ls").setup({ ensure_installed = tools })
 
 		-- for conciseness
 		local formatting = null_ls.builtins.formatting
@@ -36,6 +36,9 @@ return {
 				formatting.isort,
 				formatting.black,
 				formatting.shfmt,
+				formatting.gofmt,
+				formatting.hclfmt,
+				formatting.just,
 			},
 		})
 	end,

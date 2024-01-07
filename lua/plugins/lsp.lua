@@ -4,14 +4,27 @@ return {
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
-		{ "VonHeikemen/lsp-zero.nvim", branch = "v3.x" },
 		"williamboman/mason-lspconfig.nvim",
 		"williamboman/mason.nvim",
 	},
 	config = function()
-		local lsp = require("lsp-zero")
+		local lspconfig = require("lspconfig")
+		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
-		lsp.on_attach(function(client, _)
+		local servers = {
+			"tsserver",
+			"html",
+			"cssls",
+			"svelte",
+			"lua_ls",
+			"pyright",
+			"bashls",
+			"jsonls",
+			"ansiblels",
+		}
+
+		local capabilities = cmp_nvim_lsp.default_capabilities()
+		local on_attach = function(client, _)
 			if client.name ~= "null-ls" then
 				client.server_capabilities.documentFormattingProvider = false
 				client.server_capabilities.documentFormattingRangeProvider = false
@@ -33,54 +46,46 @@ return {
 					command = 'lua require("config.utils").svelteFix()',
 				})
 			end
-		end)
+		end
 
-		lsp.set_preferences({
-			sign_icons = { error = "E", warn = "W", hint = "H", info = "I" },
-		})
-
-		lsp.configure("lua_ls", {
-			settings = {
-				Lua = {
-					-- make the language server recognize "vim" global
-					diagnostics = {
-						globals = { "vim" },
-					},
-					workspace = {
-						-- make language server aware of runtime files
-						library = {
-							[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-							[vim.fn.stdpath("config") .. "/lua"] = true,
+		local setup_lsp = function(server_name)
+			local opts = { on_attach = on_attach, capabilities = capabilities }
+			if server_name == "lua_ls" then
+				opts.settings = {
+					Lua = {
+						diagnostics = { globals = { "vim" } },
+						workspace = {
+							library = {
+								[vim.fn.expand("$VIMRUNTIME/lua")] = true,
+								[vim.fn.stdpath("config") .. "/lua"] = true,
+							},
 						},
+						telemetry = { enabled = false },
 					},
-					telemetry = {
-						enabled = false,
-					},
-				},
-			},
-		})
+				}
+			elseif server_name == "ansiblels" then
+				opts.filetypes = {
+					"yaml.ansible",
+				}
+			end
 
-		lsp.configure("ansiblels", {
-			filetypes = {
-				"yaml.ansible",
-			},
-		})
+			return opts
+		end
+
+		local signs = { Error = "E", Warn = "W", Hint = "H", Info = "I" }
+		for type, icon in pairs(signs) do
+			local hl = "DiagnosticSign" .. type
+			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+		end
 
 		require("mason").setup()
 		require("mason-lspconfig").setup({
-			ensure_installed = {
-				"tsserver",
-				"html",
-				"cssls",
-				"svelte",
-				"lua_ls",
-				"pyright",
-				"bashls",
-				"jsonls",
-			},
+			ensure_installed = servers,
 			automatic_installation = true,
 			handlers = {
-				lsp.default_setup,
+				function(server_name)
+					lspconfig[server_name].setup(setup_lsp(server_name))
+				end,
 			},
 		})
 	end,
