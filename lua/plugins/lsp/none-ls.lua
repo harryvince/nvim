@@ -1,7 +1,7 @@
 return {
-	"nvimtools/none-ls.nvim", -- configure formatters & linters
+	"nvimtools/none-ls.nvim",
 	lazy = true,
-	event = { "BufReadPre", "BufNewFile" }, -- to enable uncomment this
+	event = 'VeryLazy',
 	dependencies = {
 		"jay-babu/mason-null-ls.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
@@ -51,7 +51,7 @@ return {
 				formatting.stylua,
 				formatting.isort,
 				formatting.black,
-                formatting.shfmt
+				formatting.shfmt,
 			},
 		})
 	end,
