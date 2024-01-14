@@ -23,12 +23,24 @@ return {
 			"ansiblels",
 		}
 
+        local disable_formatting = {
+            "tsserver",
+            "html",
+            "cssls",
+            "svelte",
+            "lua_ls",
+            "bashls",
+            "jsonls"
+        }
+
 		local capabilities = cmp_nvim_lsp.default_capabilities()
 		local on_attach = function(client, _)
-			if client.name ~= "null-ls" then
-				client.server_capabilities.documentFormattingProvider = false
-				client.server_capabilities.documentFormattingRangeProvider = false
-			end
+            for _, value in ipairs(disable_formatting) do
+                if client.name == value then
+                    client.server_capabilities.documentFormattingProvider = false
+                    client.server_capabilities.documentFormattingRangeProvider = false
+                end
+            end
 
 			if client.name == "svelte" then
 				vim.api.nvim_create_autocmd("BufWritePost", {

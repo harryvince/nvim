@@ -11,6 +11,7 @@ return {
 		local null_ls_utils = require("null-ls.utils")
 
 		local tools = {
+            "prettier",
 			"prettierd",
 			"shfmt",
 			"stylua",
@@ -18,6 +19,7 @@ return {
 			"pylint",
 			"eslint_d",
 			"ansible-lint",
+            "djlint"
 		}
 
 		require("mason-tool-installer").setup({ ensure_installed = tools })
@@ -36,9 +38,7 @@ return {
 				formatting.isort,
 				formatting.black,
 				formatting.shfmt,
-				formatting.gofmt,
-				formatting.hclfmt,
-				formatting.just,
+                formatting.djlint,
 			},
 		})
 	end,
