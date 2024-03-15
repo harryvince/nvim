@@ -75,10 +75,6 @@ return {
 						telemetry = { enabled = false },
 					},
 				}
-			elseif server_name == "ansiblels" then
-				opts.filetypes = {
-					"yaml.ansible",
-				}
 			end
 
 			return opts
