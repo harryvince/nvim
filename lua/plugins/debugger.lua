@@ -3,6 +3,7 @@ return {
     dependencies = {
         { 'mfussenegger/nvim-dap' },           -- Required
         { "jay-babu/mason-nvim-dap.nvim" },    -- Required
+        { "nvim-neotest/nvim-nio" },    -- Required
         { 'theHamsta/nvim-dap-virtual-text' }, -- Optional
     },
     event = 'VeryLazy',
