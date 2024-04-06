@@ -9,6 +9,9 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
+-- zz but for horizontal
+vim.keymap.set("n", "zs", ":normal! zszH<CR>")
+
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", "\"_dP")
 
