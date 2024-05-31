@@ -1,11 +1,12 @@
 return {
-    "folke/trouble.nvim",
-    event = 'VeryLazy',
-    config = function ()
-        local trouble = require("trouble")
-
-        vim.keymap.set("n", "<C-l>", function ()
-            trouble.toggle("workspace_diagnostics")
-        end)
-    end
+  "folke/trouble.nvim",
+  opts = {}, -- for default options, refer to the configuration section for custom setup.
+  cmd = "Trouble",
+  keys = {
+    {
+      "<C-l>",
+      "<cmd>Trouble diagnostics toggle<cr>",
+      desc = "Diagnostics (Trouble)",
+    }
+  },
 }
