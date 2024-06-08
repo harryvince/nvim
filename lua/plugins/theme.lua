@@ -67,6 +67,7 @@ return {
                         style = { "bold" },
                     },
                     TelescopeSelectioncolorsaret = { fg = colors.flamingo },
+                    LineNr = { fg = colors.yellow },
 				}
 			end,
 		})
