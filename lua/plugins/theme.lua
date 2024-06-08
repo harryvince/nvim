@@ -68,6 +68,7 @@ return {
                     },
                     TelescopeSelectioncolorsaret = { fg = colors.flamingo },
                     LineNr = { fg = colors.yellow },
+                    GitSignsCurrentLineBlame = { fg = colors.flamingo },
 				}
 			end,
 		})
