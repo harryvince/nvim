@@ -39,6 +39,7 @@ return {
 				formatting.black,
 				formatting.shfmt,
                 formatting.djlint,
+                formatting.nixpkgs_fmt,
 			},
 		})
 	end,
