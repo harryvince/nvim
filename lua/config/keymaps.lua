@@ -47,3 +47,5 @@ vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action)
 vim.keymap.set("n", "<leader>rr", vim.lsp.buf.references)
 vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename)
 vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help)
+
+vim.keymap.set("n", "<leader>zm", "<cmd>ZenMode<CR>")
