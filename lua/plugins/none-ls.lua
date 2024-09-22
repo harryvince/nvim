@@ -34,6 +34,7 @@ return {
 				formatting.prettier.with({
 					extra_filetypes = { "svelte" },
 				}),
+                formatting.biome,
 				formatting.stylua,
 				formatting.isort,
 				formatting.black,
