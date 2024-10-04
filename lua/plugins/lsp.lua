@@ -12,7 +12,7 @@ return {
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 		local servers = {
-			"tsserver",
+			"ts_ls",
 			"html",
 			"cssls",
 			"svelte",
@@ -24,7 +24,7 @@ return {
 		}
 
 		local disable_formatting = {
-			"tsserver",
+			"ts_ls",
 			"html",
 			"cssls",
 			"svelte",
@@ -92,9 +92,6 @@ return {
 			automatic_installation = true,
 			handlers = {
 				function(server_name)
-					if server_name == "tsserver" then
-						server_name = "ts_ls"
-					end
 					lspconfig[server_name].setup(setup_lsp(server_name))
 				end,
 			},
