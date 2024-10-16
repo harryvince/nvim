@@ -28,7 +28,6 @@ return {
 			},
 			custom_highlights = function(colors)
 				return {
-                    NormalFloat = { bg = colors.surface0 },
                     TelescopeBorder = {
                         fg = colors.mantle,
                         bg = colors.mantle,
