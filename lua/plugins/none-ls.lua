@@ -34,7 +34,11 @@ return {
 				formatting.prettier.with({
 					extra_filetypes = { "svelte" },
 				}),
-                formatting.biome,
+                formatting.biome.with({
+                    condition = function(utils)
+                        return utils.root_has_file({ "biome.json" })
+                    end
+                }),
 				formatting.stylua,
 				formatting.isort,
 				formatting.black,
