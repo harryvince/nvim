@@ -28,46 +28,46 @@ return {
 			},
 			custom_highlights = function(colors)
 				return {
-                    TelescopeBorder = {
-                        fg = colors.mantle,
-                        bg = colors.mantle,
-                    },
-                    TelescopeMatching = { fg = colors.blue },
-                    TelescopeNormal = {
-                        bg = colors.mantle,
-                    },
-                    TelescopePromptBorder = {
-                        fg = colors.surface0,
-                        bg = colors.surface0,
-                    },
-                    TelescopePromptNormal = {
-                        fg = colors.text,
-                        bg = colors.surface0,
-                    },
-                    TelescopePromptPrefix = {
-                        fg = colors.flamingo,
-                        bg = colors.surface0,
-                    },
-                    TelescopePreviewTitle = {
-                        fg = colors.base,
-                        bg = colors.green,
-                    },
-                    TelescopePromptTitle = {
-                        fg = colors.base,
-                        bg = colors.red,
-                    },
-                    TelescopeResultsTitle = {
-                        fg = colors.mantle,
-                        bg = colors.lavender,
-                    },
-                    TelescopeSelection = {
-                        fg = colors.text,
-                        bg = colors.surface0,
-                        style = { "bold" },
-                    },
-                    TelescopeSelectioncolorsaret = { fg = colors.flamingo },
-                    LineNr = { fg = colors.yellow },
-                    GitSignsCurrentLineBlame = { fg = colors.flamingo },
+					TelescopeBorder = {
+						fg = colors.mantle,
+						bg = colors.mantle,
+					},
+					TelescopeMatching = { fg = colors.blue },
+					TelescopeNormal = {
+						bg = colors.mantle,
+					},
+					TelescopePromptBorder = {
+						fg = colors.surface0,
+						bg = colors.surface0,
+					},
+					TelescopePromptNormal = {
+						fg = colors.text,
+						bg = colors.surface0,
+					},
+					TelescopePromptPrefix = {
+						fg = colors.flamingo,
+						bg = colors.surface0,
+					},
+					TelescopePreviewTitle = {
+						fg = colors.base,
+						bg = colors.green,
+					},
+					TelescopePromptTitle = {
+						fg = colors.base,
+						bg = colors.red,
+					},
+					TelescopeResultsTitle = {
+						fg = colors.mantle,
+						bg = colors.lavender,
+					},
+					TelescopeSelection = {
+						fg = colors.text,
+						bg = colors.surface0,
+						style = { "bold" },
+					},
+					TelescopeSelectioncolorsaret = { fg = colors.flamingo },
+					LineNr = { fg = colors.yellow },
+					GitSignsCurrentLineBlame = { fg = colors.flamingo },
 				}
 			end,
 		})

@@ -11,7 +11,7 @@ return {
 		local null_ls_utils = require("null-ls.utils")
 
 		local tools = {
-            "prettier",
+			"prettier",
 			"prettierd",
 			"shfmt",
 			"stylua",
@@ -19,7 +19,7 @@ return {
 			"pylint",
 			"eslint_d",
 			"ansible-lint",
-            "djlint"
+			"djlint",
 		}
 
 		require("mason-tool-installer").setup({ ensure_installed = tools })
@@ -34,17 +34,17 @@ return {
 				formatting.prettier.with({
 					extra_filetypes = { "svelte" },
 				}),
-                formatting.biome.with({
-                    condition = function(utils)
-                        return utils.root_has_file({ "biome.json" })
-                    end
-                }),
+				formatting.biome.with({
+					condition = function(utils)
+						return utils.root_has_file({ "biome.json" })
+					end,
+				}),
 				formatting.stylua,
 				formatting.isort,
 				formatting.black,
 				formatting.shfmt,
-                formatting.djlint,
-                formatting.nixpkgs_fmt,
+				formatting.djlint,
+				formatting.nixpkgs_fmt,
 			},
 		})
 	end,
