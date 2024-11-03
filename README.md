@@ -36,5 +36,5 @@ indent_size = 4
 _.nvimrc_
 
 ```nvimrc
-au BufRead,BufNewFile *.service.j2 set filetype=systemd
+au BufEnter,BufWinEnter *.service.j2 set filetype=systemd
 ```
