@@ -96,5 +96,8 @@ return {
 				end,
 			},
 		})
+
+        -- Globally installed servers or not managed by mason
+        lspconfig.nil_ls.setup{}
 	end,
 }
