@@ -20,6 +20,7 @@ return {
 			"eslint_d",
 			"ansible-lint",
 			"djlint",
+            "markdownlint",
 		}
 
 		require("mason-tool-installer").setup({ ensure_installed = tools })
@@ -45,6 +46,7 @@ return {
 				formatting.shfmt,
 				formatting.djlint,
 				formatting.nixpkgs_fmt,
+                formatting.markdownlint
 			},
 		})
 	end,
