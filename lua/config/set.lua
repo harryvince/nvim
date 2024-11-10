@@ -29,12 +29,6 @@ vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
-vim.opt.showcmd = true
-vim.opt.showcmdloc = 'statusline'
-vim.opt.cmdheight = 0
-vim.opt.showmode = false
-vim.opt.showtabline = 1
-
 vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
