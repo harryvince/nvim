@@ -113,6 +113,7 @@ end
 
 StatusLine = {}
 
+---@diagnostic disable-next-line: duplicate-set-field
 StatusLine.inactive = function()
 	return table.concat({
 		formatted_filetype("StatusLineMode"),
@@ -134,11 +135,22 @@ local function search_status()
 	return ""
 end
 
+--- @return string
+local function recording_status()
+	local reg_recording = vim.fn.reg_recording()
+	if reg_recording ~= "" then
+		return string.format("%%#StatusLineRecording# REC [%s] %%*", reg_recording)
+	end
+	return ""
+end
+
+---@diagnostic disable-next-line: duplicate-set-field
 StatusLine.active = function()
 	local mode_str = vim.api.nvim_get_mode().mode
 	if mode_str == "t" or mode_str == "nt" then
 		return table.concat({
 			mode(),
+			recording_status(),
 			"%=",
 			"%=",
 			"%S ",
@@ -152,6 +164,7 @@ StatusLine.active = function()
 	if redeable_filetypes[vim.bo.filetype] or vim.o.modifiable == false then
 		return table.concat({
 			formatted_filetype("StatusLineMode"),
+			recording_status(),
 			"%=",
 			"%=",
 			"%S ",
@@ -164,6 +177,7 @@ StatusLine.active = function()
 
 	local statusline = {
 		mode(),
+		recording_status(),
 		full_git(),
 		"%=",
 		"%=",
