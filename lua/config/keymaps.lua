@@ -53,3 +53,6 @@ vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename)
 vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help)
 
 vim.keymap.set("n", "<leader>zm", "<cmd>ZenMode<CR>")
+
+-- Git keymaps
+vim.keymap.set("n", "<leader>gfh", "<cmd>DiffviewFileHistory %<CR>")
