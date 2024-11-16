@@ -93,10 +93,9 @@ return {
 				function(server_name)
 					lspconfig[server_name].setup(configure(server_name))
 				end,
+                -- Globally installed servers or not managed by mason
+                lspconfig.nil_ls.setup(configure("nil_ls"))
 			},
 		})
-
-		-- Globally installed servers or not managed by mason
-		lspconfig.nil_ls.setup(configure("nil_ls"))
 	end,
 }
