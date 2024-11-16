@@ -4,6 +4,7 @@ return {
 	dependencies = {
 		{ "nvim-lua/plenary.nvim" },
 		{ "nvim-tree/nvim-web-devicons" },
+        { "aznhe21/actions-preview.nvim" },
 	},
 	event = "VeryLazy",
 	config = function()
@@ -23,11 +24,18 @@ return {
 					preview_cutoff = 120,
 				},
 			},
+			pickers = {
+				find_files = { disable_devicons = true },
+				buffers = { disable_devicons = true },
+				git_files = { disable_devicons = true },
+				live_grep = { disable_devicons = true },
+			},
 		})
 		local builtin = require("telescope.builtin")
 		vim.keymap.set("n", "<leader>pf", builtin.find_files, {})
 		vim.keymap.set("n", "<leader>bf", builtin.buffers, {})
 		vim.keymap.set("n", "<C-p>", builtin.git_files, {})
 		vim.keymap.set("n", "<leader>ps", builtin.live_grep, {})
+        vim.keymap.set("n", "<leader>ca", require("actions-preview").code_actions, {})
 	end,
 }
