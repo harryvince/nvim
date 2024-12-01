@@ -45,3 +45,6 @@ set("n", "<leader>gfh", "<cmd>DiffviewFileHistory %<CR>")
 
 -- Move tabs easier
 set("n", "<right>", "gt")
+
+-- Keybinding <leader>no to open .notes.md
+set("n", "<leader>no", ":edit ./.notes.md<CR>", { noremap = true, silent = true })
