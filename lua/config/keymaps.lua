@@ -35,24 +35,8 @@ set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 -- LSP Reset
 set("i", "<C-c>", "<Esc>")
 
--- Formatting
-set("n", "<leader>ff", function()
-	vim.lsp.buf.format({ async = true })
-end)
-
 -- Focus window
 set("n", "<leader>oo", "<cmd>only<CR>")
-
--- LSP Keymaps
-set("n", "gd", vim.lsp.buf.definition)
-set("n", "K", vim.lsp.buf.hover)
-set("n", "<leader>vws", vim.lsp.buf.workspace_symbol)
-set("n", "<leader>vd", vim.diagnostic.open_float)
-set("n", "]d", vim.diagnostic.goto_next)
-set("n", "[d", vim.diagnostic.goto_prev)
-set("n", "<leader>rr", vim.lsp.buf.references)
-set("n", "<leader>rn", vim.lsp.buf.rename)
-set("i", "<C-h>", vim.lsp.buf.signature_help)
 
 set("n", "<leader>zm", "<cmd>ZenMode<CR>")
 
@@ -60,5 +44,4 @@ set("n", "<leader>zm", "<cmd>ZenMode<CR>")
 set("n", "<leader>gfh", "<cmd>DiffviewFileHistory %<CR>")
 
 -- Move tabs easier
-set("n", "<left>", "gT")
 set("n", "<right>", "gt")
