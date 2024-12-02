@@ -34,9 +34,9 @@ return {
 			color_square_width = 2,
 		})
 
-        local colour = "#2A2F37"
-		vim.api.nvim_set_hl(0, "CmpNormal", { bg = colour })
-		vim.api.nvim_set_hl(0, "NormalFloat", { bg = colour })
+		--       local colour = "#2A2F37"
+		-- vim.api.nvim_set_hl(0, "CmpNormal", { bg = colour })
+		-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = colour })
 		local cmp = require("cmp")
 		cmp.setup({
 			window = {
