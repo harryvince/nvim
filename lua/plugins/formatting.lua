@@ -3,6 +3,7 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
 		local conform = require("conform")
+        local utils = require("conform.util")
 
 		conform.setup({
 			formatters_by_ft = {
@@ -13,6 +14,11 @@ return {
 				jsonls = { "prettier" },
                 sh = { "shfmt" },
 			},
+            formatters = {
+                prettier = { cwd = utils.root_file(".prettierrc") },
+                biome = { cwd = utils.root_file("biome.json") },
+                deno = { cwd = utils.root_file("deno.json") }
+            }
 		})
 
 		vim.keymap.set("n", "<leader>ff", function()

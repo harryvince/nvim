@@ -24,12 +24,12 @@ return {
 					preview_cutoff = 120,
 				},
 			},
-			pickers = {
-				find_files = { disable_devicons = true },
-				buffers = { disable_devicons = true },
-				git_files = { disable_devicons = true },
-				live_grep = { disable_devicons = true },
-			},
+			-- pickers = {
+			-- 	find_files = { disable_devicons = true },
+			-- 	buffers = { disable_devicons = true },
+			-- 	git_files = { disable_devicons = true },
+			-- 	live_grep = { disable_devicons = true },
+			-- },
 		})
 		local builtin = require("telescope.builtin")
 		vim.keymap.set("n", "<leader>pf", builtin.find_files, {})

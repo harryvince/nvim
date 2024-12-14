@@ -19,7 +19,7 @@ return {
 		lspkind.init()
 
 		local kind_formatter = lspkind.cmp_format({
-			mode = "symbol_text",
+			mode = "text",
 			menu = {
 				buffer = "[buf]",
 				nvim_lsp = "[lsp]",
@@ -34,14 +34,15 @@ return {
 			color_square_width = 2,
 		})
 
-		--       local colour = "#2A2F37"
-		-- vim.api.nvim_set_hl(0, "CmpNormal", { bg = colour })
-		-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = colour })
 		local cmp = require("cmp")
 		cmp.setup({
 			window = {
-				completion = { winhighlight = "Normal:CmpNormal" },
-				documentation = { winhighlight = "Normal:CmpNormal" },
+				completion = {
+					winhighlight = "Normal:CmpNormal",
+				},
+				documentation = {
+					winhighlight = "Normal:CmpNormal",
+				},
 			},
 			sources = {
 				{
