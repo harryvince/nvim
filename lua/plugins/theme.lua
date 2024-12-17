@@ -35,7 +35,7 @@ return {
 			},
 			custom_highlights = function(colors)
 				return {
-					-- LineNr = { fg = colors.yellow },
+					LineNr = { fg = colors.overlay2 },
 					GitSignsCurrentLineBlame = { fg = colors.flamingo },
 				}
 			end,
