@@ -15,7 +15,7 @@ return {
 				gitsigns = true,
 				telescope = {
 					enabled = true,
-					style = "nvchad",
+					-- style = "nvchad",
 				},
 				noice = false,
 				cmp = true,
@@ -26,13 +26,13 @@ return {
 				dap = true,
 				dap_ui = true,
 			},
-			color_overrides = {
-				mocha = {
-					base = "#000000",
-					mantle = "#000000",
-					crust = "#000000",
-				},
-			},
+			-- color_overrides = {
+			-- 	mocha = {
+			-- 		base = "#000000",
+			-- 		mantle = "#000000",
+			-- 		crust = "#000000",
+			-- 	},
+			-- },
 			custom_highlights = function(colors)
 				return {
 					LineNr = { fg = colors.overlay2 },

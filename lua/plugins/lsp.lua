@@ -12,6 +12,7 @@ return {
 			},
 		},
 		{ "Bilal2453/luvit-meta", lazy = true },
+        "saghen/blink.cmp",
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
@@ -46,10 +47,7 @@ return {
 			end
 		end
 
-		local capabilities = nil
-		if pcall(require, "cmp_nvim_lsp") then
-			capabilities = require("cmp_nvim_lsp").default_capabilities()
-		end
+        local capabilities = require('blink.cmp').get_lsp_capabilities()
 
 		local lspconfig = require("lspconfig")
 
