@@ -39,4 +39,6 @@ vim.g.netrw_banner = 0
 vim.cmd("set noshowmode")
 vim.cmd("set nrformats+=alpha")
 
+vim.cmd("setlocal spell spelllang=en_gb")
+
 utils.SetupClipboard()

@@ -113,14 +113,14 @@ return {
 		end, vim.tbl_keys(servers))
 
 		require("mason").setup()
-		local ensure_installed = {
+		local tooling = {
 			"stylua",
 			"prettier",
 			"shfmt",
 		}
 
-		vim.list_extend(ensure_installed, servers_to_install)
-		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+		vim.list_extend(tooling, servers_to_install)
+		require("mason-tool-installer").setup({ ensure_installed = tooling })
 
 		for name, config in pairs(servers) do
 			if config == true then
