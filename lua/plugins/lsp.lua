@@ -52,6 +52,7 @@ return {
 		local lspconfig = require("lspconfig")
 
 		local servers = {
+            astro = true,
 			bashls = true,
 			dockerls = true,
 			lua_ls = {
