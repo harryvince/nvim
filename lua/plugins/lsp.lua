@@ -52,7 +52,13 @@ return {
 		local lspconfig = require("lspconfig")
 
 		local servers = {
-            astro = true,
+            astro = {
+                init_options = {
+                    typescript = {
+                        tsdk = vim.fn.expand("~/.local/share/nvim/mason/packages/typescript-language-server/node_modules/typescript/lib")
+                    }
+                }
+            },
 			bashls = true,
 			dockerls = true,
 			lua_ls = {
