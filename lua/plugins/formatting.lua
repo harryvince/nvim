@@ -24,6 +24,7 @@ return {
 				javascriptreact = get_formatter(),
 				yaml = { "prettier" },
 				jsonls = { "prettier" },
+				markdown = { "prettier" },
 				sh = { "shfmt" },
 			},
 			formatters = {
