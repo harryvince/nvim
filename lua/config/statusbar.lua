@@ -42,7 +42,7 @@ end
 vim.o.statusline = "%f" -- File name
 	.. " %m" -- Modified flag
 	.. " %r" -- Read-only flag
-	.. " %y" -- File type
+	-- .. " %y" -- File type
 	.. " %= " -- Right-aligned section
 	.. "%{v:lua.LspStatus()} " -- Custom LSP function
 	.. "%{v:lua.FormatterStatus()}" -- Custom LSP function
