@@ -14,6 +14,6 @@ return {
 		})
 
 		vim.cmd.colorscheme("rose-pine")
-        vim.opt.fillchars = { eob = " " }
+		vim.opt.fillchars = { eob = " " }
 	end,
 }

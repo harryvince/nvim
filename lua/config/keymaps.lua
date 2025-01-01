@@ -13,6 +13,10 @@ set("n", "n", "nzzzv")
 set("n", "N", "Nzzzv")
 set("n", "<C-q>", ":q <CR>")
 
+-- why is this not here by default ;(
+set("x", ">", ">gv", { noremap = true, silent = true })
+set("x", "<", "<gv", { noremap = true, silent = true })
+
 -- zz but for horizontal
 set("n", "zs", ":normal! zszH<CR>")
 
