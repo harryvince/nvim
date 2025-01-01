@@ -5,17 +5,28 @@ return {
 		local conform = require("conform")
 		local utils = require("conform.util")
 
+		local function get_formatter()
+			if utils.root_file({ "biome.json" }) then
+				return { "biome" }
+			elseif utils.root_file({ "deno.json" }) then
+				return { "deno" }
+			else
+				return { "prettier" }
+			end
+		end
+
 		conform.setup({
 			formatters_by_ft = {
 				lua = { "stylua" },
-				javascript = { "prettier", stop_after_first = true },
-				typescript = { "prettier", stop_after_first = true },
+				javascript = get_formatter(),
+				typescript = get_formatter(),
+				typescriptreact = get_formatter(),
+				javascriptreact = get_formatter(),
 				yaml = { "prettier" },
 				jsonls = { "prettier" },
 				sh = { "shfmt" },
 			},
 			formatters = {
-				prettier = { cwd = utils.root_file(".prettierrc") },
 				biome = { cwd = utils.root_file("biome.json") },
 				deno = { cwd = utils.root_file("deno.json") },
 			},
