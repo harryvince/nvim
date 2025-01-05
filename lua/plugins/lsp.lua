@@ -12,7 +12,7 @@ return {
 			},
 		},
 		{ "Bilal2453/luvit-meta", lazy = true },
-        "saghen/blink.cmp",
+		"saghen/blink.cmp",
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
@@ -47,24 +47,24 @@ return {
 			end
 		end
 
-        local capabilities = require('blink.cmp').get_lsp_capabilities()
+		local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 		local lspconfig = require("lspconfig")
 
 		local servers = {
-            astro = {
-                init_options = {
-                    typescript = {
-                        tsdk = vim.fn.expand("~/.local/share/nvim/mason/packages/typescript-language-server/node_modules/typescript/lib")
-                    }
-                }
-            },
+			astro = {
+				init_options = {
+					typescript = {
+						tsdk = vim.fn.expand(
+							"~/.local/share/nvim/mason/packages/typescript-language-server/node_modules/typescript/lib"
+						),
+					},
+				},
+			},
 			bashls = true,
 			dockerls = true,
 			lua_ls = {
-				server_capabilities = {
-					semanticTokensProvider = vim.NIL,
-				},
+				server_capabilities = { semanticTokensProvider = vim.NIL },
 			},
 			pyright = true,
 			biome = {
@@ -105,9 +105,8 @@ return {
 				filetypes = { "javascriptreact", "typescriptreact", "astro", "astro-markdown", "svelte" },
 			},
 			terraformls = true,
-			nil_ls = {
-				manual_install = true,
-			},
+			nil_ls = { manual_install = true },
+            gopls = true
 		}
 
 		local servers_to_install = vim.tbl_filter(function(key)
