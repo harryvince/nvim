@@ -1,7 +1,16 @@
+local ignoreFiles = { "netrw", "scratch" }
+local ignoreFilesLSP = {}
+local ignoreFilesFMT = { "go" }
+
+vim.list_extend(ignoreFilesLSP, ignoreFiles)
+vim.list_extend(ignoreFilesFMT, ignoreFiles)
+
 function LspStatus()
-    if vim.bo.filetype == "netrw" then
-        return ""
-    end
+	for _, file in ipairs(ignoreFilesLSP) do
+		if vim.bo.filetype == file then
+			return nil
+		end
+	end
 
 	local clients = vim.lsp.get_clients()
 	local buf_clients = {}
@@ -16,13 +25,15 @@ function LspStatus()
 		return "LSP: None"
 	end
 
-	return "LSP: " .. table.concat(buf_clients, ", ") .. " "
+	return "LSP: " .. table.concat(buf_clients, ", ")
 end
 
 function FormatterStatus()
-    if vim.bo.filetype == "netrw" then
-        return ""
-    end
+	for _, file in ipairs(ignoreFilesFMT) do
+		if vim.bo.filetype == file then
+			return nil
+		end
+	end
 
 	local conform = require("conform")
 	local bufnr = vim.api.nvim_get_current_buf()
@@ -33,10 +44,25 @@ function FormatterStatus()
 		for _, formatter in ipairs(formatters) do
 			table.insert(formatter_names, formatter.name)
 		end
-        return "FMT: " .. table.concat(formatter_names, ", ") .. " |"
-    else
-        return "FMT: None"
+		return "FMT: " .. table.concat(formatter_names, ", ")
+	else
+		return "FMT: None"
 	end
+end
+
+function Display()
+    local lsp = LspStatus()
+    local formatter = FormatterStatus()
+
+    if lsp == nil and formatter then
+        return formatter
+    elseif formatter == nil and lsp then
+        return lsp
+    elseif formatter == nil and lsp == nil then
+        return ""
+    else
+        return lsp .. " " .. formatter
+    end
 end
 
 vim.o.statusline = "%f" -- File name
@@ -44,7 +70,6 @@ vim.o.statusline = "%f" -- File name
 	.. " %r" -- Read-only flag
 	-- .. " %y" -- File type
 	.. " %= " -- Right-aligned section
-	.. "%{v:lua.LspStatus()} " -- Custom LSP function
-	.. "%{v:lua.FormatterStatus()}" -- Custom LSP function
-	.. " %p%%" -- Percentage through the file
+	.. "%{v:lua.Display()}" -- Custom Display function
+	.. " | %p%%" -- Percentage through the file
 	.. " %l:%c" -- Line and column
