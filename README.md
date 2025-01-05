@@ -37,6 +37,8 @@ _.nvimrc_
 
 ```nvimrc
 au BufEnter,BufWinEnter *.service.j2 set filetype=systemd
+
+let g:formatOnSave = 1
 ```
 
 Also if your using iterm2 the background to match the theme is: `#1e1e2e`

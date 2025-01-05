@@ -33,7 +33,7 @@ return {
 			},
 		})
 
-		vim.keymap.set("n", "<leader>ff", function()
+		local format = function()
 			conform.format({
 				lsp_fallback = true,
 				async = false,
@@ -45,6 +45,15 @@ return {
 					vim.notify("No changes were made during formatting.", vim.log.levels.WARN)
 				end
 			end)
-		end)
+		end
+
+		vim.keymap.set("n", "<leader>ff", format)
+
+		if vim.g.formatOnSave == 1 then
+			vim.api.nvim_create_autocmd("BufWritePre", {
+				group = vim.api.nvim_create_augroup("custom-conform", { clear = true }),
+				callback = format,
+			})
+		end
 	end,
 }
