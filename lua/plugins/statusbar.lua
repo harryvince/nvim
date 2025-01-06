@@ -5,7 +5,7 @@ return {
 	},
 	opts = {
 		ignoreFiles = {
-			fmt = { "go" },
+			fmt = { "go", "terraform" },
 		},
 	},
 }
