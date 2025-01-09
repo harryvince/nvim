@@ -23,7 +23,7 @@ return {
 				typescriptreact = get_formatter(),
 				javascriptreact = get_formatter(),
 				yaml = { "prettier" },
-				jsonls = { "prettier" },
+				json = { "prettier" },
 				markdown = { "prettier" },
 				sh = { "shfmt" },
 			},
