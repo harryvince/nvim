@@ -78,6 +78,7 @@ return {
 				},
 			},
 			denols = {
+				manual_install = true,
 				root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
 			},
 			jsonls = {
