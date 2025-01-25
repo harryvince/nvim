@@ -5,11 +5,12 @@ return {
 	version = false,
 	opts = {
 		buffer = { modifiable = true },
-		patch = { auto_apply = true	},
+		patch = { auto_apply = true },
 	},
 	cond = function()
 		return vim.uv.os_gethostname() == "HV-MBP.local"
 	end,
+	enabled = false,
 	build = "make",
 	dependencies = {
 		"stevearc/dressing.nvim",
