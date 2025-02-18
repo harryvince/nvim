@@ -12,8 +12,12 @@ return {
 
 		signature = { enabled = true },
 
-		cmdline = {
-			sources = {},
+		completion = {
+			menu = {
+				auto_show = function(ctx)
+					return ctx.mode ~= "cmdline"
+				end,
+			},
 		},
 	},
 }
