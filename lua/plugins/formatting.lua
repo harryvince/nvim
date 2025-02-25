@@ -37,7 +37,7 @@ return {
 			conform.format({
 				lsp_fallback = true,
 				async = false,
-				timeout_ms = 500,
+				timeout_ms = 3000,
 			}, function(_, did_edit)
 				if did_edit then
 					vim.notify("File formatted.", vim.log.levels.INFO)
