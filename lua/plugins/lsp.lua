@@ -18,7 +18,6 @@ return {
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		"j-hui/fidget.nvim",
 		{ "https://git.sr.ht/~whynothugo/lsp_lines.nvim" },
-		"Fildo7525/pretty_hover",
 
 		-- Schema information
 		"b0o/SchemaStore.nvim",
@@ -145,8 +144,6 @@ return {
 			lua = true,
 		}
 
-		require("pretty_hover").setup({})
-
 		vim.api.nvim_create_autocmd("LspAttach", {
 			callback = function(args)
 				local bufnr = args.buf
@@ -164,9 +161,7 @@ return {
 				vim.keymap.set("n", "<leader>rr", builtin.lsp_references, { buffer = 0 })
 				vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = 0 })
 				vim.keymap.set("n", "gT", vim.lsp.buf.type_definition, { buffer = 0 })
-				vim.keymap.set("n", "K", function()
-					require("pretty_hover").hover()
-				end, { buffer = 0 })
+				vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
 				vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, { buffer = 0 })
 
 				vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = 0 })
