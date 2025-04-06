@@ -108,6 +108,7 @@ return {
 			nil_ls = { manual_install = true },
 			gopls = true,
 			jdtls = true,
+			rust_analyzer = true,
 		}
 
 		local servers_to_install = vim.tbl_filter(function(key)
