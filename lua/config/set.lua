@@ -43,3 +43,35 @@ vim.cmd("set nrformats+=alpha")
 vim.cmd("setlocal spell spelllang=en_gb")
 
 utils.SetupClipboard()
+
+local border = {
+	{ "┌", "FloatBorder" },
+	{ "─", "FloatBorder" },
+	{ "┐", "FloatBorder" },
+	{ "│", "FloatBorder" },
+	{ "┘", "FloatBorder" },
+	{ "─", "FloatBorder" },
+	{ "└", "FloatBorder" },
+	{ "│", "FloatBorder" },
+}
+
+-- nvim 11 changed the way hover works
+-- and i'm not using pretty_hover anymore
+
+local hover = vim.lsp.buf.hover
+---@diagnostic disable-next-line: duplicate-set-field
+vim.lsp.buf.hover = function()
+	return hover({
+		max_width = 100,
+		max_height = 14,
+		border = border,
+	})
+end
+
+vim.diagnostic.config({
+	float = {
+		max_width = 100,
+		max_height = 14,
+		border = border,
+	},
+})
