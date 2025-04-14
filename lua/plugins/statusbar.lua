@@ -1,5 +1,7 @@
 return {
 	"harryvince/statusbar.nvim",
 	dependencies = { "stevearc/conform.nvim" },
-	opts = {},
+	opts = {
+		hide_lsp = true,
+	},
 }
