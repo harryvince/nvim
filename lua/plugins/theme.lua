@@ -6,10 +6,11 @@ return {
 		---@diagnostic disable-next-line: missing-fields
 		require("rose-pine").setup({
 			variant = "moon",
+			dim_inactive_windows = true,
 			styles = {
 				bold = false,
 				italic = false,
-				transparency = true,
+				transparency = false,
 			},
 		})
 
