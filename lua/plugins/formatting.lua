@@ -9,10 +9,24 @@ return {
 			if utils.root_file({ "biome.json" }) then
 				return { "biome" }
 			elseif utils.root_file({ "deno.json" }) then
-				return { "deno" }
+				return { "deno_fmt" }
 			else
 				return { "prettier" }
 			end
+		end
+
+		local format = function()
+			conform.format({
+				lsp_fallback = true,
+				async = false,
+				timeout_ms = 3000,
+			}, function(_, did_edit)
+				if did_edit then
+					vim.notify("File formatted.", vim.log.levels.INFO)
+				else
+					vim.notify("No changes were made during formatting.", vim.log.levels.WARN)
+				end
+			end)
 		end
 
 		conform.setup({
@@ -29,31 +43,15 @@ return {
 			},
 			formatters = {
 				biome = { cwd = utils.root_file("biome.json") },
-				deno = { cwd = utils.root_file("deno.json") },
+				deno_fmt = { cwd = utils.root_file("deno.json") },
 			},
+			format_on_save = function()
+				if vim.g.formatOnSave == 1 then
+					format()
+				end
+			end,
 		})
 
-		local format = function()
-			conform.format({
-				lsp_fallback = true,
-				async = false,
-				timeout_ms = 3000,
-			}, function(_, did_edit)
-				if did_edit then
-					vim.notify("File formatted.", vim.log.levels.INFO)
-				else
-					vim.notify("No changes were made during formatting.", vim.log.levels.WARN)
-				end
-			end)
-		end
-
 		vim.keymap.set("n", "<leader>ff", format)
-
-		if vim.g.formatOnSave == 1 then
-			vim.api.nvim_create_autocmd("BufWritePre", {
-				group = vim.api.nvim_create_augroup("custom-conform", { clear = true }),
-				callback = format,
-			})
-		end
 	end,
 }
