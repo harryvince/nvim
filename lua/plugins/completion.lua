@@ -12,6 +12,16 @@ return {
 
 		signature = { enabled = true },
 
+		sources = {
+			providers = {
+				path = {
+					opts = {
+						show_hidden_files_by_default = true,
+					},
+				},
+			},
+		},
+
 		completion = {
 			menu = {
 				auto_show = function(ctx)
