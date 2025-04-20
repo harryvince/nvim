@@ -52,3 +52,14 @@ set("n", "<right>", "gt")
 
 -- Keybinding <leader>no to open .notes.md
 set("n", "<leader>no", ":edit ./.notes.md<CR>", { noremap = true, silent = true })
+
+-- Prety neat this like
+vim.keymap.set("n", "<leader>w", function()
+	if vim.wo.wrap then
+		vim.wo.wrap = false
+		print("Wrap: OFF")
+	else
+		vim.wo.wrap = true
+		print("Wrap: ON")
+	end
+end, { desc = "Toggle line wrap" })

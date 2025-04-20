@@ -1,20 +1,23 @@
 return {
-	"rose-pine/neovim",
-	name = "rose-pine",
-	priority = 1000,
-	config = function()
-		---@diagnostic disable-next-line: missing-fields
-		require("rose-pine").setup({
-			variant = "moon",
-			dim_inactive_windows = true,
-			styles = {
-				bold = false,
-				italic = false,
-				transparency = false,
-			},
-		})
+	{
+		"datsfilipe/vesper.nvim",
+		config = function()
+			require("vesper").setup({
+				transparent = false,
+				italics = {
+					comments = true,
+					keywords = false,
+					functions = false,
+					strings = true,
+					variables = false,
+				},
+				overrides = {},
+				palette_overrides = {},
+			})
+			vim.cmd.colorscheme("vesper")
 
-		vim.cmd.colorscheme("rose-pine")
-		vim.opt.fillchars = { eob = " " }
-	end,
+			vim.opt.fillchars = { eob = " " }
+			vim.api.nvim_set_hl(0, "TelescopeSelection", { bg = "#292925", fg = "#ffffff", bold = true })
+		end,
+	},
 }
