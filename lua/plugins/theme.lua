@@ -9,7 +9,7 @@ return {
 					comments = true,
 					keywords = false,
 					functions = false,
-					strings = true,
+					strings = false,
 					variables = false,
 				},
 				overrides = {},
