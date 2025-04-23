@@ -40,6 +40,7 @@ return {
 				json = { "prettier" },
 				markdown = { "prettier" },
 				sh = { "shfmt" },
+				py = { "ruff" },
 			},
 			formatters = {
 				biome = { cwd = utils.root_file("biome.json") },

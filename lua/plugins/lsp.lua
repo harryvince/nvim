@@ -65,7 +65,6 @@ return {
 			lua_ls = {
 				server_capabilities = { semanticTokensProvider = vim.NIL },
 			},
-			pyright = true,
 			biome = {
 				root_dir = lspconfig.util.root_pattern("biome.json"),
 			},
@@ -116,6 +115,8 @@ return {
 			gopls = true,
 			jdtls = true,
 			rust_analyzer = true,
+			basedpyright = true,
+			ruff = true,
 		}
 
 		local servers_to_install = vim.tbl_filter(function(key)
