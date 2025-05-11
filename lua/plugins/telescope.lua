@@ -8,6 +8,8 @@ return {
 	},
 	event = "VeryLazy",
 	config = function()
+		local picker_opts = { theme = "ivy" }
+
 		require("telescope").setup({
 			defaults = {
 				layout_config = {
@@ -26,6 +28,12 @@ return {
 			},
 			extensions = {
 				fzf = {},
+			},
+			pickers = {
+				find_files = picker_opts,
+				git_files = picker_opts,
+				grep_string = picker_opts,
+				live_grep = picker_opts,
 			},
 		})
 
