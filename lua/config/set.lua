@@ -42,7 +42,8 @@ vim.cmd("set nrformats+=alpha")
 
 vim.cmd("setlocal spell spelllang=en_gb")
 
-utils.SetupClipboard()
+-- This would need enabled if I ever go back to WSL but hopefully never again
+-- utils.SetupClipboard()
 
 local border = {
 	{ "┌", "FloatBorder" },
