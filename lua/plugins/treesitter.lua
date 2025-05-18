@@ -1,9 +1,7 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
 	event = { "BufReadPre", "BufNewFile" },
-	dependencies = {
-		"nvim-treesitter/nvim-treesitter-context",
-	},
+	-- dependencies = { "nvim-treesitter/nvim-treesitter-context" },
 	config = function()
 		---@diagnostic disable-next-line: missing-fields
 		require("nvim-treesitter.configs").setup({
