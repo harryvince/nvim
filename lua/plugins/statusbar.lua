@@ -10,9 +10,9 @@ return {
 				section_separators = "",
 			},
 			sections = {
-				-- lualine_a = { "mode" },
-				-- lualine_b = { "branch", "diff" },
-				-- lualine_c = { "filename" },
+				lualine_a = { "mode" },
+				lualine_b = { "diff" },
+				lualine_c = { { "filename", path = 1 } },
 				lualine_x = { "filetype" },
 				lualine_y = { "progress" },
 				lualine_z = { "location" },
