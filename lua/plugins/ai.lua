@@ -12,6 +12,7 @@ return {
 		"frankroeder/parrot.nvim",
 		dependencies = { "ibhagwan/fzf-lua", "nvim-lua/plenary.nvim" },
 		cond = require("config.utils").is_personal,
+		enabled = false,
 		opts = {
 			providers = {
 				anthropic = {
