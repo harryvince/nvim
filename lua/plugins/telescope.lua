@@ -44,5 +44,6 @@ return {
 		vim.keymap.set("n", "<leader>bf", builtin.buffers, {})
 		vim.keymap.set("n", "<C-p>", builtin.git_files, {})
 		vim.keymap.set("n", "<leader>ps", builtin.live_grep, {})
+		vim.keymap.set("n", "<leader>rf", builtin.grep_string, {})
 	end,
 }
