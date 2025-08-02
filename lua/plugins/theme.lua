@@ -17,6 +17,7 @@ return {
 			})
 			vim.cmd.colorscheme("vesper")
 
+			vim.cmd("highlight NormalFloat guibg=NONE")
 			vim.opt.fillchars = { eob = " " }
 		end,
 	},
