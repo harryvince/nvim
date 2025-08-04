@@ -20,16 +20,8 @@ set("x", "<", "<gv", { noremap = true, silent = true })
 -- zz but for horizontal
 set("n", "zs", ":normal! zszH<CR>")
 
--- greatest remap ever
-set("x", "<leader>p", '"_dP')
-
--- next greatest remap ever : asbjornHaland
-set("n", "<leader>y", '"+y')
-set("v", "<leader>y", '"+y')
-set("n", "<leader>Y", '"+Y')
-
-set("n", "<leader>d", '"_d')
-set("v", "<leader>d", '"_d')
+set({ "n", "v", "x" }, "<leader>y", '"+y')
+set({ "n", "v", "x" }, "<leader>d", '"+d')
 
 set("n", "Q", "<nop>")
 set("n", "-", "<nop>")
@@ -41,17 +33,6 @@ set("i", "<C-c>", "<Esc>")
 
 -- Focus window
 set("n", "<leader>oo", "<cmd>only<CR>")
-
-set("n", "<leader>zm", "<cmd>ZenMode<CR>")
-
--- Git keymaps
-set("n", "<leader>gfh", "<cmd>DiffviewFileHistory %<CR>")
-
--- Move tabs easier
-set("n", "<right>", "gt")
-
--- Keybinding <leader>no to open .notes.md
-set("n", "<leader>no", ":edit ./.notes.md<CR>", { noremap = true, silent = true })
 
 -- Prety neat this like
 vim.keymap.set("n", "<leader>w", function()

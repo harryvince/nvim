@@ -15,9 +15,7 @@ return {
 		sources = {
 			providers = {
 				path = {
-					opts = {
-						show_hidden_files_by_default = true,
-					},
+					opts = { show_hidden_files_by_default = true },
 				},
 			},
 		},

@@ -10,7 +10,7 @@ return {
 	config = function()
 		local dap, dapui = require("dap"), require("dapui")
 		dapui.setup()
-		require("nvim-dap-virtual-text").setup()
+		require("nvim-dap-virtual-text").setup({})
 
 		-- Keymaps --
 		vim.keymap.set("n", "<leader>du", dapui.toggle)
@@ -36,6 +36,7 @@ return {
 
 		-- Debuggers
 		-- Debugger list: https://github.com/jay-babu/mason-nvim-dap.nvim/blob/main/lua/mason-nvim-dap/mappings/source.lua
+		---@diagnostic disable-next-line: missing-fields
 		require("mason-nvim-dap").setup({
 			ensure_installed = { "js", "python" },
 		})
@@ -51,17 +52,13 @@ return {
 					type = "server",
 					port = assert(port, "`connect.port` is required for a python `attach` configuration"),
 					host = host,
-					options = {
-						source_filetype = "python",
-					},
+					options = { source_filetype = "python" },
 				})
 			else
 				cb({
 					type = "executable",
 					command = "debugpy-adapter",
-					options = {
-						source_filetype = "python",
-					},
+					options = { source_filetype = "python" },
 				})
 			end
 		end
@@ -97,10 +94,7 @@ return {
 			type = "server",
 			host = "localhost",
 			port = "${port}",
-			executable = {
-				command = "js-debug-adapter",
-				args = { "${port}" },
-			},
+			executable = { command = "js-debug-adapter", args = { "${port}" } },
 		}
 
 		local exts = {

@@ -1,5 +1,3 @@
-local utils = require("config.utils")
-
 vim.opt.nu = true
 vim.opt.relativenumber = true
 

@@ -12,6 +12,8 @@ return {
 				"vim",
 				"python",
 				"json",
+				"terraform",
+				"yaml",
 			},
 			sync_install = false,
 			auto_install = true,

@@ -18,22 +18,20 @@ return {
 						preview_width = 0.55,
 						results_width = 0.8,
 					},
-					vertical = {
-						mirror = false,
-					},
+					vertical = { mirror = false },
 					width = 0.85,
 					height = 0.92,
 					preview_cutoff = 120,
 				},
 			},
-			extensions = {
-				fzf = {},
-			},
+			extensions = { fzf = {} },
 			pickers = {
 				find_files = picker_opts,
 				git_files = picker_opts,
 				grep_string = picker_opts,
 				live_grep = picker_opts,
+				current_buffer_fuzzy_find = picker_opts,
+				buffers = picker_opts,
 			},
 		})
 
@@ -44,7 +42,6 @@ return {
 		vim.keymap.set("n", "<leader>bf", builtin.buffers, {})
 		vim.keymap.set("n", "<C-p>", builtin.git_files, {})
 		vim.keymap.set("n", "<leader>ps", builtin.live_grep, {})
-		vim.keymap.set("n", "<leader>rf", builtin.grep_string, {})
-		vim.keymap.set("n", "<space>/", builtin.current_buffer_fuzzy_find)
+		vim.keymap.set("n", "<space>/", builtin.current_buffer_fuzzy_find, {})
 	end,
 }
