@@ -12,6 +12,13 @@ set("n", "<C-u>", "<C-u>zz")
 set("n", "n", "nzzzv")
 set("n", "N", "Nzzzv")
 set("n", "<C-q>", ":q <CR>")
+set("n", "<leader>sc", function()
+	if vim.wo.signcolumn == "yes" then
+		vim.wo.signcolumn = "no"
+	else
+		vim.wo.signcolumn = "yes"
+	end
+end, { desc = "Toggle signcolumn" })
 
 -- why is this not here by default ;(
 set("x", ">", ">gv", { noremap = true, silent = true })
@@ -34,8 +41,8 @@ set("i", "<C-c>", "<Esc>")
 -- Focus window
 set("n", "<leader>oo", "<cmd>only<CR>")
 
--- Prety neat this like
-vim.keymap.set("n", "<leader>w", function()
+-- Pretty neat this like
+set("n", "<leader>w", function()
 	if vim.wo.wrap then
 		vim.wo.wrap = false
 		print("Wrap: OFF")
