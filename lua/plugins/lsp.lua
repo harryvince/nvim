@@ -85,6 +85,7 @@ return {
 				rust_analyzer = true,
 				pyright = true,
 				ruff = true,
+				svelte = true,
 			}
 
 			local servers_to_install = vim.tbl_filter(function(key)
