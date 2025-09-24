@@ -83,7 +83,7 @@ return {
 				gopls = true,
 				jdtls = true,
 				rust_analyzer = true,
-				basedpyright = true,
+				pyright = true,
 				ruff = true,
 			}
 
