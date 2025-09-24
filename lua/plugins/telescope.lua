@@ -23,6 +23,9 @@ return {
 					height = 0.92,
 					preview_cutoff = 120,
 				},
+				file_ignore_patterns = {
+					"node_modules",
+				},
 			},
 			extensions = { fzf = {} },
 			pickers = {
