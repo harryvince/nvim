@@ -19,8 +19,6 @@ return {
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
 			"j-hui/fidget.nvim",
 			{ "https://git.sr.ht/~whynothugo/lsp_lines.nvim" },
-
-			-- Schema information
 			"b0o/SchemaStore.nvim",
 		},
 		config = function()
@@ -111,7 +109,8 @@ return {
 					capabilities = capabilities,
 				}, config)
 
-				lspconfig[name].setup(config)
+				vim.lsp.config(name, config)
+				vim.lsp.enable(name)
 			end
 
 			local disable_semantic_tokens = { lua = true }
