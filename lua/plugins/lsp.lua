@@ -181,9 +181,4 @@ return {
 			})
 		end,
 	},
-	{
-		"supermaven-inc/supermaven-nvim",
-		cond = require("config.utils").is_personal,
-		opts = { keymaps = { accept_suggestion = "<S-Tab>" } },
-	},
 }
