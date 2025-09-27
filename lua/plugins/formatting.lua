@@ -47,7 +47,7 @@ return {
 				deno_fmt = { cwd = utils.root_file("deno.json") },
 			},
 			format_on_save = function()
-				if vim.g.formatOnSave == 1 then
+				if vim.g.formatOnSave ~= 0 then
 					format()
 				end
 			end,
