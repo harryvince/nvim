@@ -78,6 +78,7 @@ return {
 				pyright = true,
 				ruff = true,
 				svelte = true,
+				regols = true,
 			}
 
 			local servers_to_install = vim.tbl_filter(function(key)
