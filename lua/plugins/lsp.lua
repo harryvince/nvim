@@ -26,6 +26,8 @@ return {
 
 			local lspconfig = require("lspconfig")
 
+			-- schema_store url https://www.schemastore.org/api/json/catalog.json
+
 			local servers = {
 				astro = {
 					init_options = {
@@ -82,6 +84,22 @@ return {
 				ruff = true,
 				svelte = true,
 				regols = true,
+				taplo = {
+					-- See all the setting options
+					-- https://github.com/tamasfe/taplo/blob/master/editors/vscode/package.json
+					settings = {
+						eventBetterToml = {
+							configFile = { enabled = true },
+							schema = {
+								enabled = true,
+								catalogs = { "https://www.schemastore.org/api/json/catalog.json" },
+								associations = {
+									-- [".mise.toml"] = "https://mise.jdx.dev/schema/mise.json",
+								},
+							},
+						},
+					},
+				},
 			}
 
 			local servers_to_install = vim.tbl_filter(function(key)
