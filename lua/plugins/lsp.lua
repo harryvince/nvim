@@ -64,6 +64,9 @@ return {
 								["https://raw.githubusercontent.com/chainguard-dev/apko/main/pkg/build/types/schema.json"] = "apko.{yml,yaml}",
 								["https://raw.githubusercontent.com/chainguard-dev/melange/main/pkg/config/schema.json"] = "melange.{yml,yaml}",
 							},
+							customTags = {
+								"!reference sequence",
+							},
 						},
 					},
 				},
