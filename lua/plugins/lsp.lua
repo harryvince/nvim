@@ -76,10 +76,7 @@ return {
 					filetypes = { "javascriptreact", "typescriptreact", "astro", "astro-markdown", "svelte" },
 				},
 				terraformls = true,
-				nil_ls = { manual_install = true },
 				gopls = true,
-				jdtls = true,
-				rust_analyzer = true,
 				pyright = true,
 				ruff = true,
 				svelte = true,
@@ -192,9 +189,7 @@ return {
 				end
 			end)
 
-			require("fidget").setup({
-				notification = { window = { winblend = 0 } },
-			})
+			require("fidget").setup({ notification = { window = { winblend = 0 } } })
 		end,
 	},
 }
