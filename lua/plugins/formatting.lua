@@ -5,6 +5,8 @@ return {
 		local conform = require("conform")
 		local utils = require("conform.util")
 
+		vim.g.formatOnSave = true
+
 		local function get_formatter()
 			if utils.root_file({ "biome.json" }) then
 				return { "biome" }
@@ -47,12 +49,15 @@ return {
 				deno_fmt = { cwd = utils.root_file("deno.json") },
 			},
 			format_on_save = function()
-				if vim.g.formatOnSave ~= 0 then
+				if vim.g.formatOnSave == true then
 					format()
 				end
 			end,
 		})
 
-		vim.keymap.set("n", "<leader>ff", format)
+		vim.keymap.set("n", "<leader>ff", function()
+			vim.g.formatOnSave = not vim.g.formatOnSave
+			print("Format on save => " .. tostring(vim.g.formatOnSave))
+		end)
 	end,
 }
