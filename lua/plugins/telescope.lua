@@ -22,10 +22,15 @@ return {
 				},
 				file_ignore_patterns = {
 					"node_modules",
+					".git/",
+					".venv/",
 				},
 			},
 			extensions = { fzf = {} },
-			pickers = {},
+			pickers = {
+				find_files = { hidden = true },
+				live_grep = { additional_args = { "--hidden" } },
+			},
 		})
 
 		require("telescope").load_extension("fzf")
