@@ -6,7 +6,7 @@ function M.TransparentBackground()
 end
 
 function M.is_personal()
-	return vim.uv.os_gethostname() == "HV-MBP.local"
+	return vim.uv.os_gethostname() == "Harrys-MacBook-Pro.local"
 end
 
 return M
