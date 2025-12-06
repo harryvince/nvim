@@ -63,8 +63,8 @@ return {
 								["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = "*gitlab-ci*.{yml,yaml}",
 								["https://json.schemastore.org/pre-commit-config.json"] = ".pre-commit-config.{yml,yaml}",
 								["https://raw.githubusercontent.com/F1bonacc1/process-compose/refs/heads/main/schemas/process-compose-schema.json"] = "process-compose.{yml,yaml}",
-								["https://raw.githubusercontent.com/chainguard-dev/apko/main/pkg/build/types/schema.json"] = "apko.{yml,yaml}",
-								["https://raw.githubusercontent.com/chainguard-dev/melange/main/pkg/config/schema.json"] = "melange.{yml,yaml}",
+								["https://raw.githubusercontent.com/chainguard-dev/apko/main/pkg/build/types/schema.json"] = "*apko.{yml,yaml}",
+								["https://raw.githubusercontent.com/chainguard-dev/melange/main/pkg/config/schema.json"] = "*melange.{yml,yaml}",
 							},
 							customTags = {
 								"!reference sequence",
