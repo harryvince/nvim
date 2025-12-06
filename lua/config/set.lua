@@ -30,4 +30,5 @@ vim.o.winborder = "rounded"
 
 vim.cmd("set noshowmode")
 vim.cmd("set nrformats+=alpha")
-vim.cmd("setlocal spell spelllang=en_gb")
+vim.cmd("set spell")
+vim.cmd("set spelllang=en_gb")
