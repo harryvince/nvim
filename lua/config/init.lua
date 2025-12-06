@@ -6,7 +6,7 @@ end
 require("config.keymaps")
 require("config.set")
 require("config.utils")
-require("config.autocmds")
+require("config.files")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
