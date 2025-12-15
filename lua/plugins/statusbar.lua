@@ -12,7 +12,7 @@ return {
 			sections = {
 				lualine_a = { "" },
 				lualine_b = { { "filename", path = 1 } },
-				lualine_c = { "diff", "diagnostics" },
+				lualine_c = { "diagnostics" },
 				lualine_x = { "filetype" },
 				lualine_y = { "progress" },
 				lualine_z = { "location" },
