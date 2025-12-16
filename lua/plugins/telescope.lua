@@ -10,6 +10,7 @@ return {
 	config = function()
 		require("telescope").setup({
 			defaults = {
+				results_title = false,
 				layout_config = {
 					horizontal = {
 						preview_width = 0.55,
@@ -33,8 +34,20 @@ return {
 				},
 			},
 			pickers = {
-				find_files = { hidden = true },
-				live_grep = { additional_args = { "--hidden" } },
+				find_files = { hidden = true, disable_devicons = true },
+				buffers = { disable_devicons = true },
+				git_files = { disable_devicons = true },
+				live_grep = { additional_args = { "--hidden" }, disable_devicons = true },
+				current_buffer_fuzzy_find = {
+					disable_devicons = true,
+					theme = "dropdown",
+					layout_config = {
+						anchor = "N",
+						height = 0.35,
+						mirror = true,
+						width = 0.55,
+					},
+				},
 			},
 		})
 
