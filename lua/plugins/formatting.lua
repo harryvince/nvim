@@ -27,6 +27,7 @@ return {
 				markdown = { "prettier" },
 				sh = { "shfmt" },
 				py = { "ruff" },
+				go = { "gofmt" },
 			},
 			format_on_save = function()
 				if vim.g.formatOnSave == true then
