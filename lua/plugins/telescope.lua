@@ -34,10 +34,10 @@ return {
 				},
 			},
 			pickers = {
-				find_files = { hidden = true, disable_devicons = true },
+				find_files = { hidden = true, disable_devicons = true, previewer = false },
 				buffers = { disable_devicons = true },
-				git_files = { disable_devicons = true },
-				live_grep = { additional_args = { "--hidden" }, disable_devicons = true },
+				git_files = { disable_devicons = true, previewer = false },
+				live_grep = { additional_args = { "--hidden" }, disable_devicons = true, previewer = false },
 				current_buffer_fuzzy_find = {
 					disable_devicons = true,
 					theme = "dropdown",
