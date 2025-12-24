@@ -26,7 +26,7 @@ vim.opt.isfname:append("@-@")
 vim.opt.colorcolumn = "80"
 vim.opt.termguicolors = true
 vim.g.netrw_banner = 0
-vim.o.winborder = "rounded"
+-- vim.o.winborder = "rounded"
 
 vim.cmd("set noshowmode")
 vim.cmd("set nrformats+=alpha")

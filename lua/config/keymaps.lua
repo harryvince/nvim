@@ -11,14 +11,6 @@ set("n", "<C-d>", "<C-d>zz")
 set("n", "<C-u>", "<C-u>zz")
 set("n", "n", "nzzzv")
 set("n", "N", "Nzzzv")
-set("n", "<C-q>", ":q <CR>")
-set("n", "<leader>sc", function()
-	if vim.wo.signcolumn == "yes" then
-		vim.wo.signcolumn = "no"
-	else
-		vim.wo.signcolumn = "yes"
-	end
-end, { desc = "Toggle signcolumn" })
 
 -- why is this not here by default ;(
 set("x", ">", ">gv", { noremap = true, silent = true })

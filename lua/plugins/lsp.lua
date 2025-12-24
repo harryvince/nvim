@@ -29,15 +29,7 @@ return {
 			-- schema_store url https://www.schemastore.org/api/json/catalog.json
 
 			local servers = {
-				astro = {
-					init_options = {
-						typescript = {
-							tsdk = vim.fn.expand(
-								"~/.local/share/nvim/mason/packages/typescript-language-server/node_modules/typescript/lib"
-							),
-						},
-					},
-				},
+				astro = true,
 				bashls = true,
 				dockerls = true,
 				lua_ls = { server_capabilities = { semanticTokensProvider = vim.NIL } },
@@ -138,11 +130,11 @@ return {
 						settings = {}
 					end
 
-					local builtin = require("telescope.builtin")
+                    local fzf = require("fzf-lua")
 
 					vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
-					vim.keymap.set("n", "gd", builtin.lsp_definitions, { buffer = 0 })
-					vim.keymap.set("n", "<leader>rr", builtin.lsp_references, { buffer = 0 })
+					vim.keymap.set("n", "gd", fzf.lsp_definitions, { buffer = 0 })
+					vim.keymap.set("n", "<leader>rr", fzf.lsp_references, { buffer = 0 })
 					vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = 0 })
 					vim.keymap.set("n", "gT", vim.lsp.buf.type_definition, { buffer = 0 })
 					vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
