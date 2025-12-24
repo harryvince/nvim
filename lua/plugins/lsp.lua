@@ -29,9 +29,9 @@ return {
 			-- schema_store url https://www.schemastore.org/api/json/catalog.json
 
 			local servers = {
-				astro = true,
-				bashls = true,
-				dockerls = true,
+				astro = {},
+				bashls = {},
+				dockerls = {},
 				lua_ls = { server_capabilities = { semanticTokensProvider = vim.NIL } },
 				biome = { root_dir = lspconfig.util.root_pattern("biome.json") },
 				ts_ls = { server_capabilities = { documentFormattingProvider = false } },
@@ -67,12 +67,12 @@ return {
 				tailwindcss = {
 					filetypes = { "javascriptreact", "typescriptreact", "astro", "astro-markdown", "svelte" },
 				},
-				terraformls = true,
-				gopls = true,
-				pyright = true,
-				ruff = true,
-				svelte = true,
-				regols = true,
+				terraformls = {},
+				gopls = {},
+				pyright = {},
+				ruff = {},
+				svelte = {},
+				regols = {},
 				taplo = {
 					-- See all the setting options
 					-- https://github.com/tamasfe/taplo/blob/master/editors/vscode/package.json
@@ -106,15 +106,22 @@ return {
 			vim.list_extend(tooling, servers_to_install)
 			require("mason-tool-installer").setup({ ensure_installed = tooling })
 
+			vim.lsp.config("*", {
+				capabilities = capabilities,
+			})
+
 			for name, config in pairs(servers) do
 				if config == true then
 					config = {}
 				end
-				config = vim.tbl_deep_extend("force", {}, {
-					capabilities = capabilities,
-				}, config)
+				-- Only call vim.lsp.config if there are server-specific settings
+				if next(config) ~= nil then
+					-- Remove manual_install flag as it's not an LSP config field
+					local lsp_config = vim.tbl_deep_extend("force", {}, config)
+					lsp_config.manual_install = nil
+					vim.lsp.config(name, lsp_config)
+				end
 
-				vim.lsp.config(name, config)
 				vim.lsp.enable(name)
 			end
 
@@ -130,7 +137,7 @@ return {
 						settings = {}
 					end
 
-                    local fzf = require("fzf-lua")
+					local fzf = require("fzf-lua")
 
 					vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
 					vim.keymap.set("n", "gd", fzf.lsp_definitions, { buffer = 0 })

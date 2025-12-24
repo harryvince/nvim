@@ -33,7 +33,7 @@ return {
 				if vim.g.formatOnSave == true then
 					conform.format({
 						lsp_fallback = true,
-						async = false,
+                        quiet = true,
 						timeout_ms = 5000,
 					})
 				end
