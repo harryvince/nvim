@@ -148,7 +148,7 @@ return {
 					vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, { buffer = 0 })
 
 					vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = 0 })
-					vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = 0 })
+					vim.keymap.set("n", "<leader>ca", fzf.lsp_code_actions, { buffer = 0 })
 
 					local filetype = vim.bo[bufnr].filetype
 					if disable_semantic_tokens[filetype] then
