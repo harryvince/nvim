@@ -19,9 +19,6 @@ set("x", "<", "<gv", { noremap = true, silent = true })
 -- zz but for horizontal
 set("n", "zs", ":normal! zszH<CR>")
 
-set({ "n", "v", "x" }, "<leader>y", '"+y')
-set({ "n", "v", "x" }, "<leader>d", '"+d')
-
 set("n", "Q", "<nop>")
 set("n", "-", "<nop>")
 
