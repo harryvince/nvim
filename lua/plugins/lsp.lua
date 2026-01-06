@@ -38,7 +38,7 @@ return {
         dockerls = {},
         lua_ls = { server_capabilities = { semanticTokensProvider = vim.NIL } },
         biome = { root_dir = lspconfig.util.root_pattern("biome.json") },
-        ts_ls = { server_capabilities = { documentFormattingProvider = false } },
+        -- ts_ls = { server_capabilities = { documentFormattingProvider = false } },
         jsonls = {
           server_capabilities = { documentFormattingProvider = false },
           settings = {
