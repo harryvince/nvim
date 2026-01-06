@@ -18,8 +18,12 @@ return {
       "williamboman/mason-lspconfig.nvim",
       "WhoIsSethDaniel/mason-tool-installer.nvim",
       "j-hui/fidget.nvim",
-      { "https://git.sr.ht/~whynothugo/lsp_lines.nvim" },
+      "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
       "b0o/SchemaStore.nvim",
+      { -- to deal with how incredibly slow typescript is
+        "pmizio/typescript-tools.nvim",
+        dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+      },
     },
     config = function()
       local capabilities = require("blink.cmp").get_lsp_capabilities()
@@ -176,6 +180,38 @@ return {
             return
           end
         end,
+      })
+
+      require("typescript-tools").setup({
+        settings = {
+          -- tsserver_path = "~/.bun/bin/tsgo",
+          -- Performance: separate diagnostic server for large projects
+          separate_diagnostic_server = true,
+          publish_diagnostic_on = "insert_leave",
+          -- JSX auto-closing tags
+          jsx_close_tag = {
+            enable = true,
+            filetypes = { "javascriptreact", "typescriptreact" },
+          },
+          tsserver_file_preferences = {
+            includeInlayParameterNameHints = "all",
+            includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+            includeInlayVariableTypeHints = true,
+            includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+            includeInlayPropertyDeclarationTypeHints = true,
+            includeInlayFunctionParameterTypeHints = true,
+            includeInlayEnumMemberValueHints = true,
+            includeInlayFunctionLikeReturnTypeHints = true,
+            -- Enable auto imports
+            includeCompletionsForModuleExports = true,
+            includeCompletionsForImportStatements = true,
+          },
+          complete_function_calls = true,
+          include_completions_with_insert_text = true,
+          code_lens = "off",
+          disable_member_code_lens = true,
+          tsserver_max_memory = 12288,
+        },
       })
 
       require("lsp_lines").setup()
