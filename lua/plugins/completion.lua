@@ -1,30 +1,14 @@
-local function map_providers()
-  local providers = {
-    lsp = {},
-    buffer = {},
-    snippets = {},
-    path = { opts = { show_hidden_files_by_default = true } },
-  }
-  for name, provider in pairs(providers) do
-    local extra_opts = {
-      ---@diagnostic disable-next-line: unused-local
-      transform_items = function(ctx, items)
-        for _, item in ipairs(items) do
-          item.kind_icon = "[" .. name .. "]"
-        end
-        return items
-      end,
-    }
-    local provider_opts = vim.tbl_deep_extend("force", provider, extra_opts)
-    providers[name] = provider_opts
-  end
-  return providers
-end
+local source_mappings = {
+  lsp = "[lsp]",
+  buffer = "[buf]",
+  snippets = "[snip]",
+  path = "[path]",
+}
 
 return {
   {
     "saghen/blink.cmp",
-    dependencies = "rafamadriz/friendly-snippets",
+    dependencies = { "rafamadriz/friendly-snippets", "onsails/lspkind.nvim" },
     version = "v1.*",
     opts = {
       keymap = { preset = "default" },
@@ -37,7 +21,9 @@ return {
       signature = { enabled = true },
 
       sources = {
-        providers = map_providers(),
+        providers = {
+          path = { opts = { show_hidden_files_by_default = true } },
+        },
       },
 
       completion = {
@@ -45,10 +31,24 @@ return {
           auto_show = function(ctx)
             return ctx.mode ~= "cmdline"
           end,
-          draw = { columns = {
-          { "label", "label_description", gap = 1 },
-          { "kind_icon" },
-          } }
+          draw = {
+            padding = { 0, 1 },
+            components = {
+              kind_icon = {
+                text = function(ctx)
+                  return " " .. ctx.kind_icon .. ctx.icon_gap .. " "
+                end,
+              },
+              source_name = {
+                text = function(ctx) return source_mappings[ctx.source_name:lower()] end,
+              },
+            },
+            columns = {
+              { "label", "label_description" },
+              { "kind_icon", "kind" },
+              { "source_name" },
+            },
+          },
         },
       },
     },
