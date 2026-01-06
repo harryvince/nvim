@@ -32,11 +32,23 @@ set("n", "<leader>oo", "<cmd>only<CR>")
 
 -- Pretty neat this like
 set("n", "<leader>w", function()
-	if vim.wo.wrap then
-		vim.wo.wrap = false
-		print("Wrap: OFF")
-	else
-		vim.wo.wrap = true
-		print("Wrap: ON")
-	end
+  if vim.wo.wrap then
+    vim.wo.wrap = false
+    print("Wrap: OFF")
+  else
+    vim.wo.wrap = true
+    print("Wrap: ON")
+  end
 end, { desc = "Toggle line wrap" })
+
+vim.keymap.set("n", "<leader>q", function()
+  for _, win in ipairs(vim.fn.getwininfo()) do
+    if win.quickfix == 1 then
+      vim.cmd("cclose")
+      return
+    end
+  end
+  vim.cmd("copen 10")
+end, {
+  desc = "Toggle quickfix list",
+})
