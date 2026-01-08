@@ -38,7 +38,6 @@ return {
         dockerls = {},
         lua_ls = { server_capabilities = { semanticTokensProvider = vim.NIL } },
         biome = { root_dir = lspconfig.util.root_pattern("biome.json") },
-        -- ts_ls = { server_capabilities = { documentFormattingProvider = false } },
         jsonls = {
           server_capabilities = { documentFormattingProvider = false },
           settings = {
@@ -105,7 +104,12 @@ return {
       end, vim.tbl_keys(servers))
 
       require("mason").setup()
-      local tooling = { "stylua", "prettier", "shfmt" }
+      local tooling = {
+        "stylua",
+        "prettier",
+        "shfmt",
+        "ts_ls", -- need to have this with no config and just install due to typescript-tools
+      }
 
       vim.list_extend(tooling, servers_to_install)
       require("mason-tool-installer").setup({ ensure_installed = tooling })
