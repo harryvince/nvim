@@ -29,7 +29,7 @@ return {
         py = { "ruff" },
         go = { "gofmt" },
       },
-      format_after_save = function()
+      format_on_save = function()
         if vim.g.formatOnSave == true then
           conform.format({
             lsp_fallback = true,
