@@ -23,6 +23,7 @@ vim.opt.smartcase = true
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
+vim.opt.switchbuf = "useopen"
 
 vim.opt.colorcolumn = "80"
 vim.opt.termguicolors = true
