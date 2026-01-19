@@ -1,34 +1,47 @@
 return {
-  "ibhagwan/fzf-lua",
+  "nvim-telescope/telescope.nvim",
   dependencies = {
-    "nvim-tree/nvim-web-devicons",
-    "wincent/ferret"
+    "nvim-lua/plenary.nvim",
+    "nvim-telescope/telescope-ui-select.nvim",
+    { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+    "wincent/ferret",
   },
   config = function()
-    local fzf = require("fzf-lua")
-    fzf.setup({
-      winopts = {
-        fullscreen = true,
-        ---@diagnostic disable-next-line: missing-fields
-        preview = { vertical = "up:65%", layout = "vertical" },
+    local ts = require("telescope.builtin")
+    require("telescope").setup({
+      defaults = {
+        results_title = false,
+        layout_strategy = "vertical",
+        layout_config = { height = 0.95 },
+        file_ignore_patterns = {
+          "node_modules",
+          ".git/",
+          ".venv/",
+          ".terraform/",
+        },
       },
+      pickers = {
+        find_files = { hidden = true },
+        live_grep = { additional_args = { "--hidden" }, disable_devicons = true, previewer = false },
+      },
+      extensions = { fzf = {}, ["ui-select"] = {
+        require("telescope.themes").get_dropdown({}),
+      } },
     })
-    vim.cmd("FzfLua register_ui_select")
+    require("telescope").load_extension("fzf")
+    require("telescope").load_extension("ui-select")
 
-    vim.keymap.set("n", "<leader>pf", function()
-      fzf.files({ winopts = { preview = { hidden = true } } })
-    end, { desc = "Find files" })
-    vim.keymap.set("n", "<C-p>", function()
-      fzf.git_files({ winopts = { preview = { hidden = true } } })
-    end, { desc = "Find git files" })
-    vim.keymap.set("n", "<leader>bf", fzf.buffers, { desc = "Find open buffers" })
-    vim.keymap.set("n", "<leader>ps", fzf.live_grep, { desc = "Run live grep" })
-    vim.keymap.set("n", "<leader>/", function()
-      ---@diagnostic disable-next-line: missing-fields
-      fzf.lgrep_curbuf({ winopts = { preview = { hidden = true } } })
-    end, { desc = "Search in current buffer" })
+    vim.keymap.set("n", "<leader>pf", ts.find_files, { desc = "Telescope find files" })
+    vim.keymap.set("n", "<leader>pF", function()
+      ts.find_files({ cwd = vim.fn.expand("%:p:h") })
+    end, { desc = "Telescope find files" })
+    vim.keymap.set("n", "<C-p>", ts.git_files, { desc = "Telescope git files" })
+    vim.keymap.set("n", "<leader>ps", ts.live_grep, { desc = "Telescope live grep" })
+    vim.keymap.set("n", "<leader>/", ts.current_buffer_fuzzy_find, { desc = "Telescope current buffer fuzzy find" })
+    vim.keymap.set("n", "<leader>bf", ts.buffers, { desc = "Telescope buffers" })
     vim.keymap.set("n", "<leader>sp", function()
-      fzf.spell_suggest({ winopts = { fullscreen = false } })
-    end, { desc = "Find spelling suggestions" })
+      require("telescope.builtin").spell_suggest(require("telescope.themes").get_cursor({}))
+    end, { desc = "Telescope spelling suggestions" })
+    vim.keymap.set("n", "<leader>:", ts.command_history, { desc = "Telescope previous commands" })
   end,
 }

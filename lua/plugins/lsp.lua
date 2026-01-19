@@ -145,20 +145,18 @@ return {
             settings = {}
           end
 
-          local fzf = require("fzf-lua")
+          local ts = require("telescope.builtin")
 
           vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
-          vim.keymap.set("n", "gd", fzf.lsp_definitions, { buffer = 0 })
-          vim.keymap.set("n", "<leader>rr", fzf.lsp_references, { buffer = 0 })
+          vim.keymap.set("n", "gd", ts.lsp_definitions, { buffer = 0 })
+          vim.keymap.set("n", "<leader>rr", ts.lsp_references, { buffer = 0 })
           vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = 0 })
           vim.keymap.set("n", "gT", vim.lsp.buf.type_definition, { buffer = 0 })
           vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
           vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, { buffer = 0 })
 
           vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = 0 })
-          vim.keymap.set("n", "<leader>ca", function()
-            fzf.lsp_code_actions({ winopts = { fullscreen = false } })
-          end, { buffer = 0 })
+          vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = 0 })
 
           local filetype = vim.bo[bufnr].filetype
           if disable_semantic_tokens[filetype] then
