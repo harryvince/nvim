@@ -21,8 +21,10 @@ return {
         },
       },
       pickers = {
-        find_files = { hidden = true },
-        live_grep = { additional_args = { "--hidden" }, disable_devicons = true, previewer = false },
+        find_files = { hidden = true, previewer = false },
+        git_files = { previewer = false },
+        current_buffer_fuzzy_find = { previewer = false },
+        live_grep = { additional_args = { "--hidden" }, disable_devicons = true },
       },
       extensions = { fzf = {}, ["ui-select"] = {
         require("telescope.themes").get_dropdown({}),
@@ -34,9 +36,12 @@ return {
     vim.keymap.set("n", "<leader>pf", ts.find_files, { desc = "Telescope find files" })
     vim.keymap.set("n", "<leader>pF", function()
       ts.find_files({ cwd = vim.fn.expand("%:p:h") })
-    end, { desc = "Telescope find files" })
+    end, { desc = "Telescope find files (cwd)" })
     vim.keymap.set("n", "<C-p>", ts.git_files, { desc = "Telescope git files" })
     vim.keymap.set("n", "<leader>ps", ts.live_grep, { desc = "Telescope live grep" })
+    vim.keymap.set("n", "<leader>pS", function()
+      ts.live_grep({ cwd = vim.fn.expand("%:p:h") })
+    end, { desc = "Telescope live grep" })
     vim.keymap.set("n", "<leader>/", ts.current_buffer_fuzzy_find, { desc = "Telescope current buffer fuzzy find" })
     vim.keymap.set("n", "<leader>bf", ts.buffers, { desc = "Telescope buffers" })
     vim.keymap.set("n", "<leader>sp", function()
