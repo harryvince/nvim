@@ -34,3 +34,5 @@ vim.cmd("set noshowmode")
 vim.cmd("set nrformats+=alpha")
 vim.cmd("set spell")
 vim.cmd("set spelllang=en_gb")
+
+vim.g.formatOnSave = true

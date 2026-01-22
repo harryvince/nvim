@@ -5,8 +5,6 @@ return {
     local conform = require("conform")
     local util = require("conform.util")
 
-    vim.g.formatOnSave = true
-
     local function get_formatter()
       if util.root_file("biome.json") then
         return { "biome" }
