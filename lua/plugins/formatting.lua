@@ -9,7 +9,7 @@ return {
       if util.root_file("biome.json") then
         return { "biome" }
       else
-        return { "prettier" }
+        return { "oxfmt", "prettier", stop_after_first = true }
       end
     end
 
@@ -20,9 +20,10 @@ return {
         typescript = get_formatter(),
         typescriptreact = get_formatter(),
         javascriptreact = get_formatter(),
-        yaml = { "prettier" },
-        json = { "prettier" },
-        markdown = { "prettier" },
+        yaml = { "oxfmt" },
+        toml = { "oxfmt" },
+        json = { "oxfmt" },
+        markdown = { "oxfmt" },
         sh = { "shfmt" },
         py = { "ruff" },
         go = { "gofmt" },

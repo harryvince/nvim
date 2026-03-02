@@ -76,6 +76,7 @@ return {
         ruff = {},
         svelte = {},
         regols = {},
+        oxlint = {},
         taplo = {
           -- See all the setting options
           -- https://github.com/tamasfe/taplo/blob/master/editors/vscode/package.json
@@ -108,6 +109,7 @@ return {
         "stylua",
         "prettier",
         "shfmt",
+        "oxfmt",
         "ts_ls", -- need to have this with no config and just install due to typescript-tools
       }
 
