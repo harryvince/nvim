@@ -17,7 +17,7 @@ return {
           "node_modules",
           ".git/",
           ".venv/",
-          ".terraform/",
+          "\\.terraform/",
         },
       },
       pickers = {
