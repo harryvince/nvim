@@ -1,26 +1,22 @@
 return {
-	"nvim-treesitter/nvim-treesitter",
-	event = { "BufReadPre", "BufNewFile" },
-	-- dependencies = { "nvim-treesitter/nvim-treesitter-context" },
-	config = function()
-		---@diagnostic disable-next-line: missing-fields
-		require("nvim-treesitter.configs").setup({
-			ensure_installed = {
-				"javascript",
-				"typescript",
-				"lua",
-				"vim",
-				"python",
-				"json",
-				"terraform",
-				"yaml",
-			},
-			sync_install = false,
-			auto_install = true,
-			highlight = {
-				enable = true,
-				additional_vim_regex_highlighting = false,
-			},
-		})
-	end,
+  "nvim-treesitter/nvim-treesitter",
+  event = { "BufReadPre", "BufNewFile" },
+  -- dependencies = { "nvim-treesitter/nvim-treesitter-context" },
+  config = function()
+    require("nvim-treesitter").setup({
+      install_dir = vim.fn.stdpath("data") .. "/site",
+    })
+    require("nvim-treesitter")
+      .install({
+        "javascript",
+        "typescript",
+        "lua",
+        "vim",
+        "python",
+        "json",
+        "terraform",
+        "yaml",
+      })
+      :wait(300000)
+  end,
 }
