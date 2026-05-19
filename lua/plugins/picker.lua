@@ -4,7 +4,6 @@ return {
     "nvim-lua/plenary.nvim",
     "nvim-telescope/telescope-ui-select.nvim",
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-    "wincent/ferret",
   },
   config = function()
     local ts = require("telescope.builtin")
