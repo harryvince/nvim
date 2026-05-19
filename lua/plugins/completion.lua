@@ -40,7 +40,9 @@ return {
                 end,
               },
               source_name = {
-                text = function(ctx) return source_mappings[ctx.source_name:lower()] end,
+                text = function(ctx)
+                  return source_mappings[ctx.source_name:lower()]
+                end,
               },
             },
             columns = {
@@ -57,5 +59,14 @@ return {
     "supermaven-inc/supermaven-nvim",
     cond = require("config.utils").is_personal,
     opts = { keymaps = { accept_suggestion = "<S-Tab>" } },
+  },
+  {
+    "danymat/neogen",
+    config = function()
+      require("neogen").setup({})
+      vim.keymap.set("n", "<leader>nf", function()
+        require("neogen").generate()
+      end, { desc = "Neogen generate" })
+    end,
   },
 }
