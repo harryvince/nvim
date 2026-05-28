@@ -2,7 +2,7 @@ return {
   {
     "datsfilipe/vesper.nvim",
     dev = false,
-    enabled = false,
+    enabled = true,
     config = function()
       require("vesper").setup({
         italics = {
@@ -20,6 +20,7 @@ return {
   {
     "rose-pine/neovim",
     name = "rose-pine",
+    enabled = false,
     config = function()
       require("rose-pine").setup({ styles = { bold = false, italic = false } })
       vim.cmd("colorscheme rose-pine")
