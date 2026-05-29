@@ -1,4 +1,4 @@
-local filetypes = { "yaml", "terraform-vars" }
+local filetypes = { "json", "yaml", "terraform-vars" }
 
 for _, ft in ipairs(filetypes) do
   vim.api.nvim_create_autocmd("FileType", {
