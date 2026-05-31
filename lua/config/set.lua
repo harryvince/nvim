@@ -36,3 +36,5 @@ vim.cmd("set spell")
 vim.cmd("set spelllang=en_gb")
 
 vim.g.formatOnSave = true
+vim.g.lazygit_floating_window_scaling_factor = 1
+vim.g.lazygit_floating_window_use_plenary = 1

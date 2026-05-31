@@ -1,57 +1,69 @@
 return {
-	{
-		"tpope/vim-fugitive",
-		config = function()
-			vim.keymap.set("n", "<leader>lg", vim.cmd.Git)
-		end,
-	},
-	{
-		"lewis6991/gitsigns.nvim",
-		event = "VeryLazy",
-		config = function()
-			require("gitsigns").setup({
-				on_attach = function(bufnr)
-					local gs = package.loaded.gitsigns
+  {
+    "kdheepak/lazygit.nvim",
+    config = function()
+      vim.keymap.set("n", "<leader>lg", function()
+        --  get file name with extension
+        local file = vim.fn.expand("%:t")
+        vim.cmd("LazyGit")
 
-					local function map(mode, l, r, opts)
-						opts = opts or {}
-						opts.buffer = bufnr
-						vim.keymap.set(mode, l, r, opts)
-					end
+        -- Wait a bit for LazyGit to load
+        vim.defer_fn(function()
+          -- search for the file, highlight, and exit search mode in lazygit
+          vim.api.nvim_feedkeys("/" .. file, "t", true)
+          vim.api.nvim_input("<CR>")
+          vim.api.nvim_input("<ESC>")
+        end, 150) -- (milliseconds)
+      end, { desc = "[g]it" })
+    end,
+  },
+  {
+    "lewis6991/gitsigns.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("gitsigns").setup({
+        on_attach = function(bufnr)
+          local gs = package.loaded.gitsigns
 
-					-- Navigation
-					map("n", "]c", function()
-						if vim.wo.diff then
-							return "]c"
-						end
-						vim.schedule(function()
-							gs.next_hunk()
-						end)
+          local function map(mode, l, r, opts)
+            opts = opts or {}
+            opts.buffer = bufnr
+            vim.keymap.set(mode, l, r, opts)
+          end
 
-						return "<Ignore>"
-					end, { expr = true })
+          -- Navigation
+          map("n", "]c", function()
+            if vim.wo.diff then
+              return "]c"
+            end
+            vim.schedule(function()
+              gs.next_hunk()
+            end)
 
-					map("n", "[c", function()
-						if vim.wo.diff then
-							return "[c"
-						end
-						vim.schedule(function()
-							gs.prev_hunk()
-						end)
-						return "<Ignore>"
-					end, { expr = true })
+            return "<Ignore>"
+          end, { expr = true })
 
-					-- Actions
-					map("n", "<leader>gs", gs.toggle_signs)
-					map("n", "<leader>tb", gs.toggle_current_line_blame)
-					map("n", "<leader>td", gs.toggle_deleted)
-				end,
-			})
+          map("n", "[c", function()
+            if vim.wo.diff then
+              return "[c"
+            end
+            vim.schedule(function()
+              gs.prev_hunk()
+            end)
+            return "<Ignore>"
+          end, { expr = true })
 
-			-- Make the background of gitsigns transparent
-			vim.cmd("highlight GitSignsAdd guibg=NONE")
-			vim.cmd("highlight GitSignsChange guibg=NONE")
-			vim.cmd("highlight GitSignsDelete guibg=NONE")
-		end,
-	},
+          -- Actions
+          map("n", "<leader>gs", gs.toggle_signs)
+          map("n", "<leader>tb", gs.toggle_current_line_blame)
+          map("n", "<leader>td", gs.toggle_deleted)
+        end,
+      })
+
+      -- Make the background of gitsigns transparent
+      vim.cmd("highlight GitSignsAdd guibg=NONE")
+      vim.cmd("highlight GitSignsChange guibg=NONE")
+      vim.cmd("highlight GitSignsDelete guibg=NONE")
+    end,
+  },
 }
