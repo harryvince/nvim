@@ -16,6 +16,7 @@ return {
         "json",
         "terraform",
         "yaml",
+        "toml",
       })
       :wait(300000)
   end,

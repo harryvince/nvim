@@ -73,7 +73,7 @@ return {
         terraformls = {},
         gopls = {},
         pyright = {},
-        ruff = {},
+        ruff = { manual_install = true },
         svelte = {},
         regols = {},
         oxlint = {},
