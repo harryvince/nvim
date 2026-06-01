@@ -1,10 +1,6 @@
-local filetypes = { "json", "yaml", "toml", "terraform-vars" }
-
-for _, ft in ipairs(filetypes) do
-  vim.api.nvim_create_autocmd("FileType", {
-    pattern = ft,
-    callback = function()
-      vim.treesitter.start()
-    end,
-  })
-end
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
+  callback = function(args)
+    pcall(vim.treesitter.start, args.buf)
+  end,
+})
