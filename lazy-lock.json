@@ -1,5 +1,5 @@
 {
-  "SchemaStore.nvim": { "branch": "main", "commit": "efa62017f59a6346486cc567d70acce965a00b12" },
+  "SchemaStore.nvim": { "branch": "main", "commit": "bb1550c91d09d2ede8edd90a87fa4ccc9c0b9e1f" },
   "blink.cmp": { "branch": "main", "commit": "78336bc89ee5365633bcf754d93df01678b5c08f" },
   "conform.nvim": { "branch": "master", "commit": "619363c30309d29ffa631e67c8183f2a72caa373" },
   "fidget.nvim": { "branch": "main", "commit": "82404b196e73a00b1727a91903beef5ddc319d22" },

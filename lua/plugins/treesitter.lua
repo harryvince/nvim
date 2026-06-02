@@ -18,6 +18,7 @@ return {
         "yaml",
         "toml",
         "bash",
+        "dockerfile",
       })
       :wait(300000)
   end,
