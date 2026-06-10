@@ -25,6 +25,7 @@ return {
         "gotmpl",
         "hcl",
         "html",
+        "ini",
         "java",
         "javadoc",
         "javascript",
