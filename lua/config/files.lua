@@ -4,4 +4,8 @@ vim.filetype.add({
     tfvars = "terraform-vars",
     terraformrc = "hcl",
   },
+  filename = {
+    ["Dangerfile"] = "ruby",
+    ["poetry.lock"] = "toml",
+  },
 })
