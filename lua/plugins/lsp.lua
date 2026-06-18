@@ -81,13 +81,13 @@ return {
           -- See all the setting options
           -- https://github.com/tamasfe/taplo/blob/master/editors/vscode/package.json
           settings = {
-            eventBetterToml = {
+            evenBetterToml = {
               configFile = { enabled = true },
               schema = {
                 enabled = true,
                 catalogs = { "https://www.schemastore.org/api/json/catalog.json" },
                 associations = {
-                  -- [".mise.toml"] = "https://mise.jdx.dev/schema/mise.json",
+                  ["mise.toml"] = "https://mise.jdx.dev/schema/mise.json",
                 },
               },
             },
