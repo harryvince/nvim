@@ -77,6 +77,26 @@ return {
         svelte = {},
         regols = {},
         oxlint = {},
+        oxfmt = {
+          cmd = { "oxfmt", "--lsp" },
+          filetypes = {
+            "javascript",
+            "javascriptreact",
+            "typescript",
+            "typescriptreact",
+            "json",
+            "jsonc",
+            "yaml",
+            "toml",
+            "markdown",
+          },
+          root_markers = {
+            ".oxfmtrc.json",
+            ".oxfmtrc.jsonc",
+            "package.json",
+            ".git",
+          },
+        },
         taplo = {
           -- See all the setting options
           -- https://github.com/tamasfe/taplo/blob/master/editors/vscode/package.json

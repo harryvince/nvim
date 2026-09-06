@@ -5,24 +5,35 @@ return {
     require("conform").setup({
       formatters_by_ft = {
         lua = { "stylua" },
-        javascript = { "oxfmt" },
-        typescript = { "oxfmt" },
-        typescriptreact = { "oxfmt" },
-        javascriptreact = { "oxfmt" },
-        yaml = { "oxfmt" },
-        toml = { "oxfmt" },
-        json = { "oxfmt" },
-        markdown = { "oxfmt" },
         sh = { "shfmt" },
         py = { "ruff" },
         go = { "gofmt" },
       },
-      format_on_save = function()
+      format_on_save = function(bufnr)
         if vim.g.formatOnSave == true then
           return {
             lsp_format = "fallback",
             quiet = true,
             timeout_ms = 1000,
+            filter = function(client)
+              if
+                vim.tbl_contains({
+                  "javascript",
+                  "javascriptreact",
+                  "typescript",
+                  "typescriptreact",
+                  "json",
+                  "jsonc",
+                  "yaml",
+                  "toml",
+                  "markdown",
+                }, vim.bo[bufnr].filetype)
+              then
+                return client.name == "oxfmt"
+              end
+
+              return true
+            end,
           }
         end
       end,
