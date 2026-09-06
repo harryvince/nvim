@@ -2,26 +2,13 @@ return {
   "stevearc/conform.nvim",
   event = { "BufReadPre", "BufNewFile" },
   config = function()
-    local conform = require("conform")
-
-    local function get_formatter(bufnr)
-      local bufname = vim.api.nvim_buf_get_name(bufnr)
-      local dirname = bufname ~= "" and vim.fs.dirname(bufname) or vim.uv.cwd()
-
-      if vim.fs.root(dirname, "biome.json") then
-        return { "biome" }
-      else
-        return { "oxfmt", "prettier", stop_after_first = true }
-      end
-    end
-
-    conform.setup({
+    require("conform").setup({
       formatters_by_ft = {
         lua = { "stylua" },
-        javascript = get_formatter,
-        typescript = get_formatter,
-        typescriptreact = get_formatter,
-        javascriptreact = get_formatter,
+        javascript = { "oxfmt" },
+        typescript = { "oxfmt" },
+        typescriptreact = { "oxfmt" },
+        javascriptreact = { "oxfmt" },
         yaml = { "oxfmt" },
         toml = { "oxfmt" },
         json = { "oxfmt" },
