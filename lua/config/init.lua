@@ -1,13 +1,13 @@
-local local_vimrc = vim.fn.getcwd() .. "/.nvimrc"
-if vim.fn.filereadable(local_vimrc) == 1 then
-  vim.cmd("source " .. local_vimrc)
-end
-
 require("config.keymaps")
 require("config.set")
 require("config.utils")
 require("config.files")
 require("config.autocmds")
+
+local local_vimrc = vim.fn.getcwd() .. "/.nvimrc"
+if vim.fn.filereadable(local_vimrc) == 1 then
+  vim.cmd("source " .. vim.fn.fnameescape(local_vimrc))
+end
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then

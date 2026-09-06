@@ -4,7 +4,7 @@ This repo contains my neovim setup
 
 ## Setup
 
-1. Make sure neovim is installed on your machine
+1. Make sure Neovim 0.11+ is installed on your machine
 2. Run the following to setup the config
 
 ```bash

@@ -197,7 +197,7 @@ return {
           end
 
           -- Disable lsp if a matching comment is found
-          local first_line = vim.api.nvim_buf_get_lines(bufnr, 0, 1, false)[1]
+          local first_line = vim.api.nvim_buf_get_lines(bufnr, 0, 1, false)[1] or ""
           if first_line:find("lsp:disable") and first_line:find(client.name) then
             ---@diagnostic disable-next-line: missing-parameter
             client.stop()

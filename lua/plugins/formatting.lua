@@ -6,11 +6,11 @@ return {
       formatters_by_ft = {
         lua = { "stylua" },
         sh = { "shfmt" },
-        py = { "ruff" },
+        python = { "ruff" },
         go = { "gofmt" },
       },
       format_on_save = function(bufnr)
-        if vim.g.formatOnSave == true then
+        if vim.g.formatOnSave ~= false and vim.g.formatOnSave ~= 0 then
           return {
             lsp_format = "fallback",
             quiet = true,
