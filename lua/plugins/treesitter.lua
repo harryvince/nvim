@@ -53,7 +53,6 @@ return {
         "ssh_config",
         "svelte",
         "terraform",
-        "tmux",
         "toml",
         "tsx",
         "typescript",
